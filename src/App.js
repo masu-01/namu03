@@ -2,6 +2,8 @@ import React,{ useState, useEffect } from 'react';
 import {db} from './firebase'
 import './App.css';
 import TaskItem from './components/TaskItem';
+import Feed from './components/Feed';
+import Post from './components/Post';
 
 function App() {
 
@@ -52,6 +54,17 @@ function App() {
 
   return (
     <div className="App">
+      <div>
+        <h1>react授業4</h1>
+        <Feed />
+        
+       
+
+      </div>
+      <hr />
+
+
+{/* =========================================================== */}
       <div>
         <h1>react授業3</h1>
         {/* input */}
