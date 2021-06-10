@@ -31,6 +31,7 @@ const TweetInput = () => {
     // formタグを使うと送信の際にリフレッシュされます（画面がリロードされるということ）
     // formタグを使う時は必須！絶対入ります！
     e.preventDefault();
+
     if (inputImage) {
       // 画像 + テキストを登録させる
       // firebaseの仕様で同じファイル名の画像を複数回アップしてしまうと元々あったファイルが削除される
@@ -73,6 +74,10 @@ const TweetInput = () => {
             });
         }
       );
+      setName("");
+      setBday("");
+      setInputImage("");
+      alert("登録しました");
     } else {
       // テキストだけ（input="text" だけ）
       db.collection("group").add({
@@ -81,6 +86,10 @@ const TweetInput = () => {
         bday: bday,
         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
       });
+      setName("");
+      setBday("");
+      setInputImage("");
+      alert("登録しました");
     }
   };
 

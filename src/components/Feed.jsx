@@ -24,7 +24,7 @@ const Feed = () => {
     useEffect(() =>{
         const firebaseData = db
         .collection("group")
-        .orderBy("timestamp", "desc")
+        .orderBy("timestamp", "desc")   // 登録した日時(timestamp)の降順？昇順？で並べてね
         .onSnapshot((snapshot) =>
             setGroup(
                 snapshot.docs.map((doc) => ({   // 「docs」はfirebaseの用語、「doc」は「docs」のなかの1件ずつのこと
@@ -41,7 +41,7 @@ const Feed = () => {
         }
     },[])
 
-    console.log("中身確認",group)
+    // console.log("中身確認",group)
 
 
 
