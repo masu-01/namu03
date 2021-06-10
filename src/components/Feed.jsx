@@ -56,6 +56,7 @@ const Feed = () => {
             {group.map((groupItem) =>(
                 <Post
                     key={groupItem.id}
+                    id={groupItem.id}
                     image={groupItem.image}
                     name={groupItem.name}
                     bday={groupItem.bday}

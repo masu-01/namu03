@@ -7,7 +7,7 @@ import firebase from 'firebase/app';
 
 const TweetInput = () => {
   // useStateを記述
-  // 記述3　画像を保持するためのuseState
+  // 記述3 画像を保持するためのuseState
   const [inputImage, setInputImage] = useState(null);
   // 入力された文字を保持します
   const [name, setName] = useState("");
@@ -112,10 +112,9 @@ const TweetInput = () => {
         <div>
           <input type="file" onChange={onChangeImageHandler} />
         </div>
-        <hr />
         <div>
           <button type="submit" disabled={!name}>
-            送信
+            登録
           </button>
         </div>
       </form>
