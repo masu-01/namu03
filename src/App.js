@@ -2,7 +2,7 @@ import React,{ useState, useEffect } from 'react';
 import { db, auth } from './firebase'
 import './App.css';
 import List from './components/List';
-import Logout from './components/Logout';
+import Menu from './components/Menu';
 
 function App(props) {
 
@@ -25,13 +25,9 @@ function App(props) {
     <div className="App">
       
       <div>
-        <Logout />
+        <Menu />
         <hr />
-      </div>
-
-      <div>
-        <List />
-        <hr />
+        <p>TOPの仏壇ページ</p>
       </div>
 
     </div>

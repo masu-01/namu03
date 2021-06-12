@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react'
 import { db, auth } from '../firebase'
+import Menu from './Menu';
 import Post from './Post'
 
 
@@ -59,6 +60,7 @@ const Feed = (props) => {
 
     return (
         <div className="App">
+            <Menu />
             {/* Post.jsxにpropsの情報を渡す＆Post.jsで整えた表示方法で、またここで表示させる */}
             {group.map((groupItem) =>(
                 <Post

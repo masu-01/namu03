@@ -1,0 +1,44 @@
+nav ul{
+    display: table;
+    margin: 20px auto;
+    padding: 0 ;
+    width: 80%;
+    text-align: center;
+    }
+
+nav li{
+    display: table-cell;
+    min-width: 50px;
+    }
+
+nav a{
+    display: block;
+    width: 100%;
+    text-decoration: none;
+    color: #555;
+    padding-bottom: 5px;
+    }
+
+nav li.current{
+    border-bottom: 3px solid #92D050;
+    }
+
+nav li:hover{
+    color: #E7DA66;
+    font-weight: bold;
+    font-size: 24px;
+    font:#ff1493;
+    border-bottom: 3px solid #ff1493;
+    }
+
+.logoutButton{
+    border: none;  /* 枠線を消す */
+    outline: none; /* クリックしたときに表示される枠線を消す */
+    background: transparent; /* 背景の灰色を消す */
+    display: block;
+    width: 100%;
+    text-decoration: none;
+    color: #555;
+    padding-bottom: 5px;
+    font-size: 16px;
+    }

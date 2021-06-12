@@ -1,10 +1,12 @@
 import React from 'react'
 import { auth } from '../firebase'
+import "./style.css"
 
 const Logout = (props) => {
     return (
         <div>
             <button
+                className="logoutButton"
                 onClick={async () => {
                 try {
                 await auth.signOut();
@@ -14,7 +16,7 @@ const Logout = (props) => {
                 }
             }}
             >
-            ログアウトボタン
+            ログアウト
             </button>
         </div>
     )

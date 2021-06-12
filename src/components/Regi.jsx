@@ -1,10 +1,26 @@
 // 登録フォーム
 
-import React, { useState } from 'react';
-import { db, storage } from '../firebase';
+import React, { useState, useEffect } from 'react';
+import { db, storage, auth } from '../firebase';
 import firebase from 'firebase/app';
+import Menu from './Menu';
 
-const Regi = () => {
+const Regi = (props) => {
+    // ==ログイン認証セット===================================================
+    useEffect(() => {
+        // onAuthStateChanged→何らかのユーザー認証変化があったら実行される
+        // その際に[user]内に格納される＝空だったら何も起こらない→つまりログインされていない状態
+        const unSub = auth.onAuthStateChanged((user) => {
+        // あるときは user = true ,
+        // ないときは !user = false
+        // !user = falseとなる、つまりユーザーがログインしていない状態の時はログインページに飛ばす
+        !user && props.history.push("login");
+        });
+        return () => unSub();
+    }, []);
+    // ==ログイン認証セット===================================================
+
+
   // useStateを記述
   // 記述3 画像を保持するためのuseState
   const [inputImage, setInputImage] = useState(null);
@@ -94,6 +110,7 @@ const Regi = () => {
 
   return (
     <div>
+        <Menu />
       {/* 登録の担当をするパーツ（コンポーネント） */}
       {/* TweetInputではinputタグや送信ボタンを置いて、firebaseにデータを登録するものを記述します */}
       <h1>登録してください</h1>
