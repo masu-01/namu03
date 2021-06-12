@@ -35,7 +35,7 @@ const Login = (props) => {
             </div>
 
             {/* ログインしてください */}
-            <h1 className="loginText">
+            <h1 className="titleText">
                 {isLogin ? "ログインしてください" : "アカウントを作成する"}
             </h1>
 

@@ -4,6 +4,8 @@ import React, { useState, useEffect } from 'react';
 import { db, storage, auth } from '../firebase';
 import firebase from 'firebase/app';
 import Menu from './Menu';
+import "./style.css"
+
 
 const Regi = (props) => {
     // ==ログイン認証セット===================================================
@@ -109,17 +111,18 @@ const Regi = (props) => {
   };
 
   return (
-    <div>
+    <div className="body-content">
         <Menu />
       {/* 登録の担当をするパーツ（コンポーネント） */}
       {/* TweetInputではinputタグや送信ボタンを置いて、firebaseにデータを登録するものを記述します */}
-      <h1>登録してください</h1>
+      <h1 className="titleText">登録してください</h1>
       {/* formタグを使います */}
       <form onSubmit={sendTweet}>
         <div>
           <input
             type="text"
             placeholder="なまえ"
+            className="loginInput"
             autoFocus
             value={name}
             onChange={(e) => setName(e.target.value)}
@@ -129,13 +132,14 @@ const Regi = (props) => {
           <input
             type="text"
             placeholder="誕生日"
+            className="loginInput"
             autoFocus
             value={bday}
             onChange={(e) => setBday(e.target.value)}
           />
         </div>
         <div>
-          <input type="file" onChange={onChangeImageHandler} />
+          <input type="file" onChange={onChangeImageHandler} className="loginInput" />
         </div>
         <div>
           <button type="submit" disabled={!name}>

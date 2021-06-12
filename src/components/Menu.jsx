@@ -13,6 +13,7 @@ const Menu = () => {
                     <li><Logout /></li>
                 </ul>
             </nav>
+            <hr />
         </div>
     )
 }
