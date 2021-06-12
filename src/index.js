@@ -2,11 +2,23 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import { Route, BrowserRouter } from 'react-router-dom';
+import Login from './components/Login'
+
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <BrowserRouter>
+    <>
+      {/* ログインしていないときはApp.jsを表示する */}
+      <Route exact path="/" component={App} />
+
+      {/* ログインしたときはLogin.jsを表示する */}
+      <Route exact path="/login" component={Login} />
+
+
+    </>
+  </BrowserRouter>,
+
   document.getElementById('root')
 );
 

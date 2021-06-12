@@ -1,11 +1,26 @@
 import React,{ useState, useEffect } from 'react';
-import {db} from './firebase'
+import { db, auth } from './firebase'
 import './App.css';
 import TaskItem from './components/TaskItem';
 import Feed from './components/Feed';
 import Post from './components/Post';
+import Logout from './components/Logout';
 
-function App() {
+function App(props) {
+
+  // ==ログイン認証===================================================
+  useEffect(() => {
+    // onAuthStateChanged→何らかのユーザー認証変化があったら実行される
+    // その際に[user]内に格納される＝空だったら何も起こらない→つまりログインされていない状態
+    const unSub = auth.onAuthStateChanged((user) => {
+      // あるときは user = true ,
+      // ないときは !user = false
+      // !user = falseとなる、つまりユーザーがログインしていない状態の時はログインページに飛ばす
+      !user && props.history.push("login");
+    });
+    return () => unSub();
+  }, []);
+
 
   // =================================================================
   // 授業3
@@ -54,6 +69,14 @@ function App() {
 
   return (
     <div className="App">
+      
+      <div>
+        <Logout />
+        <hr />
+      </div>
+
+
+{/* =========================================================== */}
       <div>
         <h1>react授業4</h1>
         <Feed />
