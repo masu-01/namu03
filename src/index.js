@@ -15,7 +15,6 @@ ReactDOM.render(
       {/* ログインしたときはLogin.jsを表示する */}
       <Route exact path="/login" component={Login} />
 
-
     </>
   </BrowserRouter>,
 
