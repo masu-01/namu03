@@ -1,7 +1,7 @@
 import React,{ useState, useEffect } from 'react';
 import { db, auth } from './firebase'
 import './App.css';
-import Feed from './components/Feed';
+import List from './components/List';
 import Logout from './components/Logout';
 
 function App(props) {
@@ -30,8 +30,7 @@ function App(props) {
       </div>
 
       <div>
-        <h1>react授業4</h1>
-        <Feed />
+        <List />
         <hr />
       </div>
 
