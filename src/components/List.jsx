@@ -1,16 +1,26 @@
-// 授業4
-// firebaseのデータを取得してPost.jsxにデータを流す
-// データ流したPost.jsxを読み込んでここで表示する
-
-// 表示部分はList.jsxに移行したので消していいはず
+// 登録した人たちのリスト
 
 import React, { useState, useEffect } from 'react'
-import {db} from '../firebase'
+import { db, auth } from '../firebase'
 import Post from './Post'
-import TweetInput from './TweetInput'
 
 
-const Feed = () => {
+const Feed = (props) => {
+    // ==ログイン認証セット===================================================
+    useEffect(() => {
+        // onAuthStateChanged→何らかのユーザー認証変化があったら実行される
+        // その際に[user]内に格納される＝空だったら何も起こらない→つまりログインされていない状態
+        const unSub = auth.onAuthStateChanged((user) => {
+        // あるときは user = true ,
+        // ないときは !user = false
+        // !user = falseとなる、つまりユーザーがログインしていない状態の時はログインページに飛ばす
+        !user && props.history.push("login");
+        });
+        return () => unSub();
+    }, []);
+    // ==ログイン認証セット===================================================
+
+
     // firebaseに登録したデータを受け取るための箱=useState
     const [ group, setGroup ] = useState([
         { 
@@ -48,12 +58,7 @@ const Feed = () => {
 
 
     return (
-        <div>
-            {/* TweetInput.jsxを表示させる */}
-            <TweetInput />
-            <hr />
-
-
+        <div className="App">
             {/* Post.jsxにpropsの情報を渡す＆Post.jsで整えた表示方法で、またここで表示させる */}
             {group.map((groupItem) =>(
                 <Post

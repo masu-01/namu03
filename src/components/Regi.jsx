@@ -1,13 +1,10 @@
-// 授業4
-// firebaseに情報を登録するためのパーツ（inputとかformとか）
-
-// Regi.jsxに移行したのでもう消していいはず
+// 登録フォーム
 
 import React, { useState } from 'react';
 import { db, storage } from '../firebase';
 import firebase from 'firebase/app';
 
-const TweetInput = () => {
+const Regi = () => {
   // useStateを記述
   // 記述3 画像を保持するためのuseState
   const [inputImage, setInputImage] = useState(null);
@@ -99,7 +96,7 @@ const TweetInput = () => {
     <div>
       {/* 登録の担当をするパーツ（コンポーネント） */}
       {/* TweetInputではinputタグや送信ボタンを置いて、firebaseにデータを登録するものを記述します */}
-      <h1>TweetInput</h1>
+      <h1>登録してください</h1>
       {/* formタグを使います */}
       <form onSubmit={sendTweet}>
         <div>
@@ -133,4 +130,4 @@ const TweetInput = () => {
   );
 };
 
-export default TweetInput
+export default Regi
