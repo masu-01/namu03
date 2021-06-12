@@ -1,3 +1,12 @@
+body{
+    font-family:"Meiryo",monospace ;
+}
+
+
+.body-content {
+    text-align: center;
+  }
+
 nav ul{
     display: table;
     margin: 20px auto;
@@ -42,3 +51,20 @@ nav li:hover{
     padding-bottom: 5px;
     font-size: 16px;
     }
+
+
+.topLogo{
+    text-align: center;
+    margin: 20px;
+}
+
+.loginInput{
+    margin: 15px;
+}
+
+.loginText{
+    font-family:"Hiragino Kaku Gothic ProN" ;
+    font: 18px gray;
+    font-weight: bold;
+
+}

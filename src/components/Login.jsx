@@ -1,5 +1,7 @@
 import React,{ useState, useEffect }  from 'react';
 import { auth } from '../firebase';
+import "./style.css"
+import num_logo from '../img/num_logo.png'
 
 const Login = (props) => {
     // ログイン状態の保持
@@ -26,72 +28,77 @@ const Login = (props) => {
 
 
     return (
-        <div>
-            {/*  */}
-            <h1>
-                {isLogin ? "Login" : "Register"}
-            </h1>
+        <div className="body-content">
+            {/* ロゴ表示 */}
+            <div className="topLogo" >
+            <img src={num_logo} width="350px" />
+            </div>
 
-            <hr></hr>
+            {/* ログインしてください */}
+            <h1 className="loginText">
+                {isLogin ? "ログインしてください" : "アカウントを作成する"}
+            </h1>
 
             {/* 記述４　ログインで必要なフォームを準備 */}
             <input
                 type="text"
                 name="email"
+                className="loginInput"
+                placeholder="ID"
                 value={email} //useStateでemailに保持した文字列が入ってくる
                 onChange={(e) => setEmail(e.target.value)}
             />
 
-            <hr></hr>
-
             <input
                 type="password"
                 name="password"
+                className="loginInput"
+                placeholder="Password"
                 value={password}
                 onChange={(e) => {setPassword(e.target.value);}}
             />
 
-            <hr></hr>
-
             {/* 記述６　送信ボタン作成 */}
-            <button
-            onClick={
-                // この中にクリックされた処理を記載していく
-                isLogin
-                    ? async () => {
-                        try{
-                            // email,passwordで保持した状態を送り→成功すればhistoryによって画面遷移が実行される
-                            await auth.signInWithEmailAndPassword(email, password);
-                            props.history.push("/");
-                        } catch(error) {
-                            // ログインできない、失敗したときはエラーで表示される
-                            alert(error.message);
+            <div>
+                <button
+                onClick={
+                    // この中にクリックされた処理を記載していく
+                    isLogin
+                        ? async () => {
+                            try{
+                                // email,passwordで保持した状態を送り→成功すればhistoryによって画面遷移が実行される
+                                await auth.signInWithEmailAndPassword(email, password);
+                                props.history.push("/");
+                            } catch(error) {
+                                // ログインできない、失敗したときはエラーで表示される
+                                alert(error.message);
+                            }
+                        }
+                    :
+                    async () => {
+                        try {
+                        // 作成時 firebaseに[createUserWithEmailAndPassword]というものがあるのでそれに
+                        // email, passwordで保持した状態を送り→成功すればhistoryによって画面遷移が実行される
+                        await auth.createUserWithEmailAndPassword(email, password);
+                        props.history.push("/");
+                        } catch (error) {
+                        // ログインできない、失敗したときはエラーで表示される
+                        alert(error.message);
                         }
                     }
-                :
-                async () => {
-                    try {
-                      // 作成時 firebaseに[createUserWithEmailAndPassword]というものがあるのでそれに
-                      // email, passwordで保持した状態を送り→成功すればhistoryによって画面遷移が実行される
-                      await auth.createUserWithEmailAndPassword(email, password);
-                      props.history.push("/");
-                    } catch (error) {
-                      // ログインできない、失敗したときはエラーで表示される
-                      alert(error.message);
-                    }
-                  }
-            }
-            >
-                 {/* 記述８ isLoginの情報を元に　テキストを変更してみましょう🤗*/}
-                 {isLogin ? "ログインする" : "登録する"}
-            </button>
+                }
+                >
+                    {/* 記述８ isLoginの情報を元に　テキストを変更してみましょう🤗*/}
+                    {isLogin ? "ログインする" : "登録する"}
+                </button>
+            </div>
 
             <hr />
 
             {/* 記述9 通常だとisLoginが[true]になっているので[ログインする]という文字列のまま */}
             {/* ここでisLoginを切り替えるonClickを作成します🤗 */}
             <div onClick={() => setIsLogin(!isLogin)}>
-            {isLogin ? "Create new account ?" : "Back to login"}
+            {isLogin ? "アカウント作成はこちら" : "アカウントをお持ちの方はこちら"}
       </div>
 
         </div>
