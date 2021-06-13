@@ -28,7 +28,9 @@ const Regi = (props) => {
   const [inputImage, setInputImage] = useState(null);
   // 入力された文字を保持します
   const [name, setName] = useState("");
+  const [relation, setRelation] = useState("");
   const [bday, setBday] = useState("");
+  const [dday, setDday] = useState("");
 
   // 記述3 ファイル選択→画像を選ぶ　画像を保持する
   const onChangeImageHandler = (e) => {
@@ -85,14 +87,18 @@ const Regi = (props) => {
               await db.collection("group").add({
                 image: url,
                 name: name,
+                relation: relation,
                 bday: bday,
+                dday: dday,
                 timestamp: firebase.firestore.FieldValue.serverTimestamp(),
               });
             });
         }
       );
       setName("");
+      setRelation("");
       setBday("");
+      setDday("");
       setInputImage("");
       alert("登録しました");
     } else {
@@ -100,11 +106,15 @@ const Regi = (props) => {
       db.collection("group").add({
         image: "",
         name: name,
+        relation: relation,
         bday: bday,
+        dday: dday,
         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
       });
       setName("");
+      setRelation("");
       setBday("");
+      setDday("");
       setInputImage("");
       alert("登録しました");
     }
@@ -119,6 +129,9 @@ const Regi = (props) => {
       {/* formタグを使います */}
       <form onSubmit={sendTweet}>
         <div>
+          <input type="file" onChange={onChangeImageHandler} className="loginInput" />
+        </div>
+        <div>
           <input
             type="text"
             placeholder="なまえ"
@@ -126,6 +139,16 @@ const Regi = (props) => {
             autoFocus
             value={name}
             onChange={(e) => setName(e.target.value)}
+          />
+        </div>
+        <div>
+          <input
+            type="text"
+            placeholder="続柄"
+            className="loginInput"
+            autoFocus
+            value={relation}
+            onChange={(e) => setRelation(e.target.value)}
           />
         </div>
         <div>
@@ -139,7 +162,14 @@ const Regi = (props) => {
           />
         </div>
         <div>
-          <input type="file" onChange={onChangeImageHandler} className="loginInput" />
+          <input
+            type="text"
+            placeholder="命日"
+            className="loginInput"
+            autoFocus
+            value={dday}
+            onChange={(e) => setDday(e.target.value)}
+          />
         </div>
         <div>
           <button type="submit" disabled={!name}>

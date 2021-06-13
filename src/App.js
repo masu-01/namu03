@@ -26,7 +26,6 @@ function App(props) {
       
       <div>
         <Menu />
-        <hr />
         <p>TOPの仏壇ページ</p>
       </div>
 

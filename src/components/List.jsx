@@ -28,7 +28,9 @@ const Feed = (props) => {
             id:"",
             image: "",
             name:"",
+            relation:"",
             bday: "",
+            dday: "",
             timestamp: null,
         }
     ])
@@ -44,7 +46,9 @@ const Feed = (props) => {
                     id: doc.id,
                     image: doc.data().image,
                     name: doc.data().name,
+                    relation: doc.data().relation,
                     bday: doc.data().bday,
+                    dday: doc.data().dday,
                     timestamp: doc.data().timestamp,
                 }))
                 )
@@ -68,7 +72,9 @@ const Feed = (props) => {
                     id={groupItem.id}
                     image={groupItem.image}
                     name={groupItem.name}
+                    relation={groupItem.relation}
                     bday={groupItem.bday}
+                    dday={groupItem.dday}
                     timestamp={groupItem.timestamp}
                 />
             ))}
