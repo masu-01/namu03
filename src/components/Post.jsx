@@ -28,8 +28,13 @@ const Post = ({ id, name, relation, bday, dday, image, timestamp}) => {
 
             {/* 登録日を表示 */}
             {/* <div>{new Date(timestamp?.toDate()).toLocaleString()}</div> */}
+            <div>
+            <button onClick={deleteInputData}>削除</button>
+            </div>
+            <div>
+            <button>詳細</button>
+            </div>
 
-            <button onClick={deleteInputData}>削除</button> 
             <hr />        
         </div>
     )

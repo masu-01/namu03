@@ -6,8 +6,8 @@ import { Route, BrowserRouter } from 'react-router-dom';
 import Login from './components/Login'
 import List from './components/List'
 import Regi from './components/Regi'
-
-
+import NumuItemChoice from './components/NumuItemChoice'
+import NumuItemCheck from './components/NumuItemCheck';
 
 
 ReactDOM.render(
@@ -24,6 +24,12 @@ ReactDOM.render(
 
       {/* 登録ページ */}
       <Route exact path="/regi" component={Regi} />
+
+      {/* なむなむする */}
+      <Route exact path="/choice" component={NumuItemChoice} />
+
+      {/* なむなむのアイテム確認 */}
+      <Route exact path="/check" component={NumuItemCheck} />
 
     </>
   </BrowserRouter>,

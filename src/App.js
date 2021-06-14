@@ -3,6 +3,7 @@ import { db, auth } from './firebase'
 import './App.css';
 import List from './components/List';
 import Menu from './components/Menu';
+import NumuItemChoice from './components/NumuItemChoice';
 
 function App(props) {
 
@@ -27,6 +28,7 @@ function App(props) {
       <div>
         <Menu />
         <p>TOPの仏壇ページ</p>
+        <a href="/choice">なむなむする</a>
       </div>
 
     </div>
