@@ -66,42 +66,87 @@ const Regi = (props) => {
       const uploadTweetImg = storage.ref(`images/${fileName}`).put(inputImage);
       // 記述7
       // firebaseのDBに登録する処理
+      console.log("START uploadTweetImg.on")
+
       uploadTweetImg.on(
         firebase.storage.TaskEvent.STATE_CHANGED,
-        // 3つ設定できる
-        // 進捗度合い = プログレス
-        // エラーに関する = アップロードがうまくいかないなどのエラーを管理する
-        // 成功した時 今回でいうと async（非同期＝何かを実行した後に次のことをするためのもの）
         () => {}, //進捗度合いの管理するもの、
         (err) => {
           //エラーに関する処理
-          alert(err.message);
+          console.log(err);
+          alert("Fail Upload Image", err.message);
         },
         async () => {
-          //成功したとき
-          await storage
-            .ref("images")
-            .child(fileName)
-            .getDownloadURL()
-            .then(async (url) => {
-              await db.collection("group").add({
-                image: url,
-                name: name,
-                relation: relation,
-                bday: bday,
-                dday: dday,
-                timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-              });
+          // upload 成功
+          console.log('SUCCESS UPLOAD IMAGE', fileName);
+          try {
+            const url = await storage.ref(`images/${fileName}`).getDownloadURL();
+            console.log('file path', url);
+            const res = await db.collection("group").add({
+              image: url,
+              name: name,
+              bday: bday,
+              timestamp: firebase.firestore.FieldValue.serverTimestamp(),
             });
+            console.log('SUCCESS save to group', res);
+            // ▼ ここに移動
+            setName("");
+            setBday("");
+            setInputImage("");
+            alert("登録しました (画像+投稿)");
+            // ▲ ここに移動させる
+          } catch(error) {
+            console.log(error)
+            alert("登録に失敗しました", error.message);
+          }
         }
       );
+
+
+
+      // uploadTweetImg.on(
+      //   firebase.storage.TaskEvent.STATE_CHANGED,
+      //   // 3つ設定できる
+      //   // 進捗度合い = プログレス
+      //   // エラーに関する = アップロードがうまくいかないなどのエラーを管理する
+      //   // 成功した時 今回でいうと async（非同期＝何かを実行した後に次のことをするためのもの）
+      //   () => {}, //進捗度合いの管理するもの、
+      //   (err) => {
+      //     //エラーに関する処理
+      //     alert(err.message);
+      //   },
+      //   async () => {
+      //     //成功したとき
+      //     await storage
+      //       .ref("images")
+      //       .child(fileName)
+      //       .getDownloadURL()
+      //       .then(async (url) => {
+      //         await db.collection("group").add({
+      //           image: url,
+      //           name: name,
+      //           relation: relation,
+      //           bday: bday,
+      //           dday: dday,
+      //           timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+      //         });
+      //       })
+      //       // 追加
+      //       .catch((error) => {
+      //           console.log(error);
+      //           alert(error.message);
+      //         });
+      //   }
+      // );
+      
       setName("");
       setRelation("");
       setBday("");
       setDday("");
       setInputImage("");
-      alert("登録しました");
+      // alert("登録しました");
     } else {
+        console.log('inputImage 無し', inputImage); // 追加
       // テキストだけ（input="text" だけ）
       db.collection("group").add({
         image: "",

@@ -31,7 +31,7 @@ const Login = (props) => {
         <div className="body-content">
             {/* ロゴ表示 */}
             <div className="topLogo" >
-            <img src={num_logo} width="350px" />
+            <img src={num_logo} width="350px" alt="num_logo" />
             </div>
 
             {/* ログインしてください */}
