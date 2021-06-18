@@ -101,6 +101,9 @@ const Login = (props) => {
             {isLogin ? "アカウント作成はこちら" : "アカウントをお持ちの方はこちら"}
       </div>
 
+      <div>
+      </div>
+
         </div>
     )
 };
