@@ -26,6 +26,8 @@ const Post = ({ id, name, relation, bday, dday, image, timestamp}) => {
             <div>誕生日：{bday}</div>
             <div>命日：{dday}</div>
 
+            {/* {console.log("DID",id)} IDとれてる */}
+
             {/* 登録日を表示 */}
             {/* <div>{new Date(timestamp?.toDate()).toLocaleString()}</div> */}
             <div>

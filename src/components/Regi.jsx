@@ -8,20 +8,25 @@ import "./style.css"
 
 
 const Regi = (props) => {
-    // ==ログイン認証セット===================================================
-    useEffect(() => {
-        // onAuthStateChanged→何らかのユーザー認証変化があったら実行される
-        // その際に[user]内に格納される＝空だったら何も起こらない→つまりログインされていない状態
-        const unSub = auth.onAuthStateChanged((user) => {
-        // あるときは user = true ,
-        // ないときは !user = false
-        // !user = falseとなる、つまりユーザーがログインしていない状態の時はログインページに飛ばす
-        !user && props.history.push("login");
-        });
-        return () => unSub();
-    }, []);
-    // ==ログイン認証セット===================================================
+  
+  // ==ログイン認証セット===================================================
+  useEffect(() => {
+      // onAuthStateChanged→何らかのユーザー認証変化があったら実行される
+      // その際に[user]内に格納される＝空だったら何も起こらない→つまりログインされていない状態
+      const unSub = auth.onAuthStateChanged((user) => {
+      // あるときは user = true ,
+      // ないときは !user = false
+      // !user = falseとなる、つまりユーザーがログインしていない状態の時はログインページに飛ばす
+      !user && props.history.push("login");
+      });
+      return () => unSub();
+  }, []);
+  // ==ログイン認証セット===================================================
 
+  // エラーの原因がこれ＝＝＝＝＝＝＝＝＝＝＝＝
+      const userId = auth.currentUser.uid
+      console.log("uid",userId)
+  // ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 
   // useStateを記述
   // 記述3 画像を保持するためのuseState
@@ -87,6 +92,7 @@ const Regi = (props) => {
               name: name,
               bday: bday,
               timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+              uid: userId,
             });
             console.log('SUCCESS save to group', res);
             // ▼ ここに移動
@@ -102,43 +108,6 @@ const Regi = (props) => {
         }
       );
 
-
-
-      // uploadTweetImg.on(
-      //   firebase.storage.TaskEvent.STATE_CHANGED,
-      //   // 3つ設定できる
-      //   // 進捗度合い = プログレス
-      //   // エラーに関する = アップロードがうまくいかないなどのエラーを管理する
-      //   // 成功した時 今回でいうと async（非同期＝何かを実行した後に次のことをするためのもの）
-      //   () => {}, //進捗度合いの管理するもの、
-      //   (err) => {
-      //     //エラーに関する処理
-      //     alert(err.message);
-      //   },
-      //   async () => {
-      //     //成功したとき
-      //     await storage
-      //       .ref("images")
-      //       .child(fileName)
-      //       .getDownloadURL()
-      //       .then(async (url) => {
-      //         await db.collection("group").add({
-      //           image: url,
-      //           name: name,
-      //           relation: relation,
-      //           bday: bday,
-      //           dday: dday,
-      //           timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-      //         });
-      //       })
-      //       // 追加
-      //       .catch((error) => {
-      //           console.log(error);
-      //           alert(error.message);
-      //         });
-      //   }
-      // );
-      
       setName("");
       setRelation("");
       setBday("");
@@ -155,6 +124,7 @@ const Regi = (props) => {
         bday: bday,
         dday: dday,
         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+        uid: userId,
       });
       setName("");
       setRelation("");

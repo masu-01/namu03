@@ -19,17 +19,6 @@ const LoginGoogle = () => {
     
           </div>
         );
-    //   }
-    // }
-    
-    // Reduxと繋げる
-    // const mapStateToProps = ({ auth }) => {
-    //   return {
-    //     email: auth.email,
-    //     password: auth.password,
-    //     error: auth.error,
-    //     loading: auth.loading,
-    //   };
     };
 
 

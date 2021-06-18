@@ -21,7 +21,6 @@ const Feed = (props) => {
     }, []);
     // ==ログイン認証セット===================================================
 
-
     // firebaseに登録したデータを受け取るための箱=useState
     const [ group, setGroup ] = useState([
         { 
@@ -58,7 +57,7 @@ const Feed = (props) => {
         }
     },[])
 
-    // console.log("中身確認",group)
+    // console.log("中身確認",group
 
 
 

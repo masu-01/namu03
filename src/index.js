@@ -8,7 +8,7 @@ import List from './components/List'
 import Regi from './components/Regi'
 import NumuItemChoice from './components/NumuItemChoice'
 import NumuItemCheck from './components/NumuItemCheck'
-import LoginGoogle from './components/LoginGoogle'
+import Glogin from './components/Glogin'
 
 ReactDOM.render(
   <BrowserRouter>
@@ -20,7 +20,8 @@ ReactDOM.render(
       <Route exact path="/login" component={Login} />
 
       {/* Googleでログイン */}
-      <Route exact path="/google-login" component={LoginGoogle} />
+      <Route exact path="/google-login" component={Glogin} />
+
 
       {/* 登録した人のリスト表示ページ */}
       <Route exact path="/list" component={List} />
