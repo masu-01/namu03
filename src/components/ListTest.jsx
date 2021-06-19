@@ -2,18 +2,19 @@
 
 import React, { useState, useEffect } from 'react'
 import { db, auth } from '../firebase'
-import Menu from './Menu';
+import Menu from './Menu'
 import Post from './Post'
 
-
 const ListTest = (props) => {
-  // UID取得＝＝＝＝＝＝
-  const [currentUser, setCurrentUser] = useState("")
-  auth.onAuthStateChanged(user => {
-     setCurrentUser(user);
-    });
-  // console.log(currentUser.uid)
-  // ＝＝＝＝＝＝＝＝＝＝＝
+    // UID取得＝＝＝＝＝＝
+        const [currentUser, setCurrentUser] = useState("")
+        auth.onAuthStateChanged(user => {
+            setCurrentUser(user);
+            });
+        const userId = currentUser.uid
+        // console.log(currentUser.uid)
+    // ＝＝＝＝＝＝＝＝＝＝＝
+
 
     // ==ログイン認証セット===================================================
     useEffect(() => {
@@ -28,6 +29,7 @@ const ListTest = (props) => {
         return () => unSub();
     }, []);
     // ==ログイン認証セット===================================================
+
 
     // firebaseに登録したデータを受け取るための箱=useState
     const [ group, setGroup ] = useState([
@@ -45,32 +47,28 @@ const ListTest = (props) => {
 
     // firebaseのデータを取得する（useEffect）
     useEffect(() =>{
+        console.log("中では見れないの？",userId)
         const firebaseData = db
         .collection("group")
-        // .where("uid", "==", currentUser.uid)  // これじゃできない！
-        .orderBy("timestamp", "desc")   // 登録した日時(timestamp)の降順？昇順？で並べてね
+        .where("uid", "==", "PHEK6Xr1Wsbou0yQgV6x1lNZWAw2")
         .onSnapshot((snapshot) =>
-            setGroup(
-                snapshot.docs.map((doc) => ({   // 「docs」はfirebaseの用語、「doc」は「docs」のなかの1件ずつのこと
-                    id: doc.id,
-                    image: doc.data().image,
-                    name: doc.data().name,
-                    relation: doc.data().relation,
-                    bday: doc.data().bday,
-                    dday: doc.data().dday,
-                    uid: doc.data().uid,
-                    timestamp: doc.data().timestamp,
-                }))
-                )
-        )
+        setGroup(
+            snapshot.docs.map((doc) => ({   // 「docs」はfirebaseの用語、「doc」は「docs」のなかの1件ずつのこと
+                id: doc.id,
+                image: doc.data().image,
+                name: doc.data().name,
+                relation: doc.data().relation,
+                bday: doc.data().bday,
+                dday: doc.data().dday,
+                uid: doc.data().uid,
+                timestamp: doc.data().timestamp,
+            }))
+            )
+    )
         return () => {
             firebaseData();
         }
-    },[])
-
-    // console.log("中身確認",group
-
-
+    },[userId])
 
     return (
         <div className="App">

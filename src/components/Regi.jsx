@@ -30,11 +30,6 @@ const Regi = (props) => {
   }, []);
   // ==ログイン認証セット===================================================
 
-  // エラーの原因がこれ＝＝＝＝＝＝＝＝＝＝＝＝
-      // const userId = auth.currentUser.uid
-      // console.log("uid",userId)
-  // ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
-
   // useStateを記述
   // 記述3 画像を保持するためのuseState
   const [inputImage, setInputImage] = useState(null);
@@ -201,7 +196,8 @@ const Regi = (props) => {
           <button type="submit" disabled={!name}>
             登録
           </button>
-        </div>
+          </div> 
+          <p>ボタン押したら、登録完了と表示されるまで待ってね</p>
       </form>
     </div>
   );
