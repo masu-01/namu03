@@ -8,7 +8,14 @@ import "./style.css"
 
 
 const Regi = (props) => {
-  
+  // UID取得＝＝＝＝＝＝
+  const [currentUser, setCurrentUser] = useState("")
+  auth.onAuthStateChanged(user => {
+     setCurrentUser(user);
+    });
+  // console.log(currentUser.uid)
+  // ＝＝＝＝＝＝＝＝＝＝＝
+
   // ==ログイン認証セット===================================================
   useEffect(() => {
       // onAuthStateChanged→何らかのユーザー認証変化があったら実行される
@@ -24,8 +31,8 @@ const Regi = (props) => {
   // ==ログイン認証セット===================================================
 
   // エラーの原因がこれ＝＝＝＝＝＝＝＝＝＝＝＝
-      const userId = auth.currentUser.uid
-      console.log("uid",userId)
+      // const userId = auth.currentUser.uid
+      // console.log("uid",userId)
   // ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 
   // useStateを記述
@@ -92,7 +99,7 @@ const Regi = (props) => {
               name: name,
               bday: bday,
               timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-              uid: userId,
+              uid: currentUser.uid,
             });
             console.log('SUCCESS save to group', res);
             // ▼ ここに移動
@@ -124,7 +131,7 @@ const Regi = (props) => {
         bday: bday,
         dday: dday,
         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-        uid: userId,
+        uid: currentUser.uid,
       });
       setName("");
       setRelation("");
@@ -138,6 +145,10 @@ const Regi = (props) => {
   return (
     <div className="body-content">
         <Menu />
+
+      {/* UID取れてるか確認 */}
+      {/* <span>ログインUID:{currentUser.uid}</span> */}
+
       {/* 登録の担当をするパーツ（コンポーネント） */}
       {/* TweetInputではinputタグや送信ボタンを置いて、firebaseにデータを登録するものを記述します */}
       <h1 className="titleText">登録してください</h1>

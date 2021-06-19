@@ -7,7 +7,7 @@ import { db, storage } from '../firebase';
 
 
 // propsを受け取る
-const Post = ({ id, name, relation, bday, dday, image, timestamp}) => {
+const Post = ({ id, name, relation, bday, dday, image, uid, timestamp}) => {
 
     // 削除ボタンの処理
     const deleteInputData = () =>{

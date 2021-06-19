@@ -9,6 +9,7 @@ import Regi from './components/Regi'
 import NumuItemChoice from './components/NumuItemChoice'
 import NumuItemCheck from './components/NumuItemCheck'
 import Glogin from './components/Glogin'
+import ListTest from './components/ListTest'
 
 ReactDOM.render(
   <BrowserRouter>
@@ -34,6 +35,8 @@ ReactDOM.render(
 
       {/* なむなむのアイテム確認 */}
       <Route exact path="/check" component={NumuItemCheck} />
+
+      <Route exact path="/listtest" component={ListTest} />
 
     </>
   </BrowserRouter>,

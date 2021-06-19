@@ -6,7 +6,7 @@ import Menu from './Menu';
 import Post from './Post'
 
 
-const Feed = (props) => {
+const ListTest = (props) => {
   // UID取得＝＝＝＝＝＝
   const [currentUser, setCurrentUser] = useState("")
   auth.onAuthStateChanged(user => {
@@ -47,6 +47,7 @@ const Feed = (props) => {
     useEffect(() =>{
         const firebaseData = db
         .collection("group")
+        // .where("uid", "==", currentUser.uid)  // これじゃできない！
         .orderBy("timestamp", "desc")   // 登録した日時(timestamp)の降順？昇順？で並べてね
         .onSnapshot((snapshot) =>
             setGroup(
@@ -96,4 +97,4 @@ const Feed = (props) => {
     )
 }
 
-export default Feed
+export default ListTest
