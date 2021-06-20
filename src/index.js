@@ -3,13 +3,13 @@ import ReactDOM from 'react-dom';
 // import './index.css';
 import App from './App';
 import { Route, BrowserRouter } from 'react-router-dom';
-import Login from './components/Login'
+// import Login from './components/Login'
 import List from './components/List'
 import Regi from './components/Regi'
 import NumuItemChoice from './components/NumuItemChoice'
 import NumuItemCheck from './components/NumuItemCheck'
 import Glogin from './components/Glogin'
-import ListTest from './components/ListTest'
+// import ListTest from './components/ListTest'
 
 ReactDOM.render(
   <BrowserRouter>
@@ -18,10 +18,10 @@ ReactDOM.render(
       <Route exact path="/" component={App} />
 
       {/* ログインしたときはLogin.jsを表示する */}
-      <Route exact path="/login" component={Login} />
+      {/* <Route exact path="/login" component={Login} /> */}
 
       {/* Googleでログイン */}
-      <Route exact path="/google-login" component={Glogin} />
+      <Route exact path="/login" component={Glogin} />
 
 
       {/* 登録した人のリスト表示ページ */}
@@ -36,7 +36,7 @@ ReactDOM.render(
       {/* なむなむのアイテム確認 */}
       <Route exact path="/check" component={NumuItemCheck} />
 
-      <Route exact path="/listtest" component={ListTest} />
+      {/* <Route exact path="/listtest" component={ListTest} /> */}
 
     </>
   </BrowserRouter>,

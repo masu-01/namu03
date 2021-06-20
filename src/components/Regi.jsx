@@ -49,6 +49,7 @@ const Regi = (props) => {
       e.target.value = "";
     }
   };
+  
   // 記述4. 送信ボタンが押されたら（エンターが押されたら）送信の処理=firebaseにデータを登録する処理を書きます
   const sendTweet = (e) => {
     // useStateで保持した変数を確認
