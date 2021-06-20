@@ -10,7 +10,7 @@ const Logout = (props) => {
                 onClick={async () => {
                 try {
                 await auth.signOut();
-                props.history.push("login"); //ここでログアウトして飛ばしたいページに戻す
+                props.history.push("/"); //ここでログアウトして飛ばしたいページに戻す
                 } catch (error) {
                 alert(error.message);
                 }
