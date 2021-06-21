@@ -19,7 +19,7 @@ const NumuItemCheck = ({flower,drink,smoke,bell}) => {
                     <span>のみものは{drink}</span><br />
                     <span>おせんこうは{smoke}</span><br />
                     <span>おりんは{bell}</span><br />
-                    <button>決定する</button>
+                    <button onClick={() => window.location.href='/'}>決定する</button>
 
                     <button onClick={() => setIsOpen(false)}>戻る</button>
                 </Modal>

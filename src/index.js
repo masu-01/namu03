@@ -9,6 +9,8 @@ import Regi from './components/Regi'
 import NumuItemChoice from './components/NumuItemChoice'
 import NumuItemCheck from './components/NumuItemCheck'
 import Glogin from './components/Glogin'
+import GoogleCalender from './components/GoogleCalender'
+
 // import ListTest from './components/ListTest'
 
 ReactDOM.render(
@@ -35,6 +37,9 @@ ReactDOM.render(
 
       {/* なむなむのアイテム確認 */}
       <Route exact path="/check" component={NumuItemCheck} />
+
+      {/* カレンダーテスト */}
+      <Route exact path="/calender" component={GoogleCalender} />
 
       {/* <Route exact path="/listtest" component={ListTest} /> */}
 
