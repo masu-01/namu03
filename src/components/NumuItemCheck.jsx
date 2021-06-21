@@ -1,11 +1,36 @@
 import React,{ useState } from 'react'
 import Modal from 'react-modal'
+import { db, auth} from '../firebase';
+import firebase from 'firebase/app';
 import Menu from './Menu'
 
 Modal.setAppElement("#root");
 
 const NumuItemCheck = ({flower,drink,smoke,bell}) => {
+    // UID取得＝＝＝＝＝＝
+    const [currentUser, setCurrentUser] = useState("")
+    auth.onAuthStateChanged(user => {
+        setCurrentUser(user);
+        });
+    // console.log(currentUser.uid)
+    // ＝＝＝＝＝＝＝＝＝＝＝
+
     const [modalIsOpen, setIsOpen] = useState(false);
+
+    const sendNamuSet = (e) => {
+        // console.log(flower)
+        db.collection("namulog").add({
+            image:"",
+            flower: flower,
+            drink: drink,
+            smoke: smoke,
+            bell: bell,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+            uid: currentUser.uid,
+        })
+
+
+    }
 
     return (
         <div>
@@ -19,7 +44,9 @@ const NumuItemCheck = ({flower,drink,smoke,bell}) => {
                     <span>のみものは{drink}</span><br />
                     <span>おせんこうは{smoke}</span><br />
                     <span>おりんは{bell}</span><br />
-                    <button onClick={() => window.location.href='/'}>決定する</button>
+                    <button onClick={sendNamuSet}>決定する</button>
+                    {/* <button onClick={() => window.location.href='/'}>決定する</button> */}
+
 
                     <button onClick={() => setIsOpen(false)}>戻る</button>
                 </Modal>
