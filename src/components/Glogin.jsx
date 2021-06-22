@@ -48,9 +48,12 @@ const Glogin = (props) => {
                 {isLogin ? "ログインしてください" : "アカウントを作成する"}
             </h1> */}
 
-            <button onClick={googleLogin} align="center" iconSize={'20'} size={'40'}>
+            <div className="btnWrapGoogle">
+            <button onClick={googleLogin} className="btnImageGoogle">
+            {/* <button onClick={googleLogin} align="center" iconSize={'20'} size={'40'}> */}
               <span style={{ fontSize: 16 }}>Googleでログイン</span>
             </button>
+            </div>
 
             {/* 記述４　ログインで必要なフォームを準備 */}
             {/* <input
@@ -79,7 +82,6 @@ const Glogin = (props) => {
                 {/* </button> */}
             {/* </div> */}
 
-            <hr />
 
             {/* 記述9 通常だとisLoginが[true]になっているので[ログインする]という文字列のまま */}
             {/* ここでisLoginを切り替えるonClickを作成します🤗 */}

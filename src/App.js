@@ -4,6 +4,7 @@ import { auth } from './firebase'
 // import { db, auth } from './firebase'
 import './App.css';
 import Menu from './components/Menu';
+import NamuLog from './components/NamuLog';
 import butsudan from './img/butsudan.png';
 // import NumuItemChoice from './components/NumuItemChoice';
 
@@ -40,6 +41,9 @@ function App(props) {
 
       <a href="/choice"><button>なむなむする</button></a>
       </div>
+
+      <hr />
+      <NamuLog />
 
     </div>
   );
