@@ -10,15 +10,11 @@ import "./style.css";
 const Post = ({ id, name, image}) => {
 
     return (
-        <div>
-        <div className="topFaceContainer">
-            {/* imageを表示させる */}
-            <div className="topFaceDate">
-                <div><img src={image} alt="" width="200px" height="auto"  className="topFaceImage" /></div>
-                {/* name/bdayが渡ってくる */}
-                <div className="topFaceName">{name}</div>
+        <div className="topFaceDate">
+            <img src={image} alt="" className="topFaceImage" /> 
+            <div className="topFaceName">
+                {name}
             </div>
-        </div>
         </div>
     )
 }

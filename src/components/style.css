@@ -119,27 +119,16 @@ nav li:hover{
 /* ===================================== */
 
 /* ==TOPページ======================= */
-.topFaceContainer{
-    /* text-align: center; */
-    /* display: flex; */
-    width: 90%;
-    position: relative;
-    left: 50%
-    
-    /* align-items: center; */
-    /* margin: 0 auto; */
-    /* justify-content: center; */
-}
 
 .topFaceDate{
     /* overflow: hidden; */
     position: relative;
-    left: -50%;
+    /* left: -50%; */
     float:left;
     /* display: inline-block; */
     /* max-width: 80% ; */
     margin: 10px 15px;
-}
+  }
 
 .topFaceImage{
     width: auto;
@@ -153,6 +142,80 @@ nav li:hover{
     color:#ff1493;
 }
 
+.LogDispTime{
+    width: 40px;
+}
+
+
+.tableTime{
+  width: 200px;
+  border:solid;
+}
+
+/* なむログ表示 */
+.logBody{
+    width: 100%;
+    margin: 0 auto;
+}
+
+.logUl{
+    list-style: none;
+    display: inline-block;
+    text-align: left;
+}
+
+.list-row {
+    display: flex;
+    align-items: center;
+    /* padding-bottom: 4px; */
+  }
+
+.span-head01 {
+    display: flex;
+    float: left;
+    height: 20px;
+    min-width:210px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.span-head02 {
+    /* display: block; */
+    float: left;
+    margin-left: 10px;
+    min-width:100px;
+    text-align: left;
+  }
+
+.span-head03 {
+    float: left;
+    margin-left: 30px;
+    min-width:100px;
+    text-align: left;
+}
+
+.span-head04{
+    float: left;
+    margin-left: 10px;
+    min-width:100px;
+    text-align: left;
+}
+
+.namulogImg{
+    width: 40px;
+    height: auto;
+}
+
+.listLi{
+    height: 40px;
+    line-height: 40px;
+    vertical-align: middle;
+}
+
+.namilogHr{
+    width: 500px;
+    border-style: dotted;
+}
 /* ===================================== */
 
 
@@ -195,6 +258,9 @@ nav li:hover{
 }
 /* ===================================== */
 
+/* ==アイテム確認モーダルのなか======================= */
+
+/* ===================================== */
 
 
 /* ==******======================= */

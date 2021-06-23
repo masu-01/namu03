@@ -1,4 +1,5 @@
 import React,{ useState } from 'react'
+import {Link} from "react-router-dom"
 import Modal from 'react-modal'
 import { db, auth} from '../firebase';
 import firebase from 'firebase/app';
@@ -69,7 +70,9 @@ const NumuItemCheck = ({flower,drink,bell}) => {
                     <span>のみものは{drink}</span><br />
                     {/* <span>おそなえものは{image}</span><br /> */}
                     <span>おりんは{bell}</span><br />
-                    <button onClick={sendNamuSet}>決定する</button>
+                    <div className="btnWrapGoogle">
+                        <Link to="/" className="btnImageGoogle" onClick={sendNamuSet}>決定する</Link>
+                    </div>
                     {/* <button onClick={() => window.location.href='/'}>決定する</button> */}
 
                     <button onClick={() => setIsOpen(false)}>戻る</button>

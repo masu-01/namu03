@@ -26,9 +26,6 @@ const NamuLog = () => {
         }
     ])
 
-    // const timestampDate = db.collection("namulog")
-    // console.log("たいむすたんぷ！",timestampDate)
-
     // firebaseのデータを取得する（useEffect）
     useEffect(() =>{
         // console.log("useEffectの",currentUser.uid)
@@ -38,7 +35,7 @@ const NamuLog = () => {
             const firebaseData = db
             .collection("namulog")
             .where("uid", "==", uid)
-            // .orderBy("timestamp", "desc")
+            .orderBy("timestamp", "desc")
             .onSnapshot((snapshot) =>
             setNamulog(
                 snapshot.docs.map((doc) => ({   // 「docs」はfirebaseの用語、「doc」は「docs」のなかの1件ずつのこと
@@ -48,7 +45,7 @@ const NamuLog = () => {
                     smoke: doc.data().smoke,
                     bell: doc.data().bell,
                     uid: doc.data().uid,
-                    timestamp: doc.data().timestamp.toDate,
+                    timestamp: doc.data().timestamp
                 }))
                 )
             )
@@ -62,6 +59,7 @@ const NamuLog = () => {
 
     return (
         <div className="App">
+
             {/* NamuLogDispley.jsにpropsの情報を渡す＆NamuLogDispley.jsで整えた表示方法で、またここで表示させる */}
             {namulog.map((namulogItem) =>(
                 <NamuLogDispley

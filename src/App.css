@@ -48,6 +48,18 @@
   padding: 10px;
 }
 
+.topFaceContainer{
+  /* text-align: center; */
+  display: flex;
+  /* width: 90%; */
+  /* position: relative;
+  left: 50% */
+  
+  /* align-items: center; */
+  /* margin: 0 auto; */
+  justify-content: center;
+}
+
 /* ＝＝＝＝＝＝＝＝＝＝＝＝＝ */
 
 /* なむなむボタン＝＝＝＝＝＝＝＝＝＝＝＝＝＝ */
@@ -84,3 +96,14 @@
 }
 
 /* ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ */
+
+.namuLogArea{
+  width: 100%;
+}
+
+.namuLogData{
+margin: 3px auto;
+height: 300px;
+width: 700px;
+overflow: auto;
+}

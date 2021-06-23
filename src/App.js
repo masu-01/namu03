@@ -9,6 +9,7 @@ import Menu from './components/Menu';
 import NamuLog from './components/NamuLog';
 import TopFaceDispleyGet from './components/TopFaceDispleyGet';
 import butsudan from './img/butsudan.png';
+import { withWidth } from '@material-ui/core';
 
 // import NumuItemChoice from './components/NumuItemChoice';
 
@@ -32,29 +33,31 @@ function App(props) {
   return (
     <div className="App">
       
-      <div>
         <Menu />
-        {/* <p>ここがtopページだよ</p>
-      背景はぶつだんで、登録した人の写真が並んでます<br />
-      コンポーネント化したほうが良さそうではある<br />
-      このぶつだんの画像の上にどうやって登録した人の写真のっけるんだろう・・・・・・<br /> */}
 
-      <div className="contents">
-      <div className="topBgi" >
-      <img src={butsudan} height="400px" />
-      </div>
+        <div className="contents">
 
-      <TopFaceDispleyGet />
+          <div className="topBgi" >
+            <img src={butsudan} height="400px" />
+          </div>
 
-      <div className="btnWrapNamu">
-      <Link to="/choice" className="btnImageNamu">なむなむする</Link>
-      </div>
-      </div>
-      </div>
+          <div className="topFaceContainer">
+          <TopFaceDispleyGet />
+          </div>
 
-      <hr />
-      <NamuLog />
+          <div className="btnWrapNamu">
+            <Link to="/choice" className="btnImageNamu">なむなむする</Link>
+          </div>
 
+        </div>
+
+        <div className="namuLogArea">
+        <div>あなたのなむログ</div>
+        <div className="namuLogData">
+        <NamuLog />
+        </div>
+        </div>
+        
     </div>
   );
 }

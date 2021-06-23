@@ -43,8 +43,6 @@ const GoogleCalender = (props) => {
     // }
 
 
-
-
     const getEvents = async () => {
         return new Promise(async (resolve, reject) => {
           // 2.認証チェック
