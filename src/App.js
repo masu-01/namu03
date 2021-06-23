@@ -4,9 +4,12 @@ import {Link} from "react-router-dom"
 import { auth } from './firebase'
 // import { db, auth } from './firebase'
 import './App.css';
+import "../src/components/style.css"
 import Menu from './components/Menu';
 import NamuLog from './components/NamuLog';
+import TopFaceDispleyGet from './components/TopFaceDispleyGet';
 import butsudan from './img/butsudan.png';
+
 // import NumuItemChoice from './components/NumuItemChoice';
 
 function App(props) {
@@ -38,8 +41,10 @@ function App(props) {
 
       <div className="contents">
       <div className="topBgi" >
-      <img src={butsudan} />
+      <img src={butsudan} height="400px" />
       </div>
+
+      <TopFaceDispleyGet />
 
       <div className="btnWrapNamu">
       <Link to="/choice" className="btnImageNamu">なむなむする</Link>

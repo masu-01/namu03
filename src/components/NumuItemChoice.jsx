@@ -24,18 +24,18 @@ const NumuItemChoice = () => {
     const [ flower, setFlower ] = useState("")
     const [ drink, setDrink ] = useState("")
     // const [ smoke, setSmoke ] = useState("")
-    const [inputImage, setInputImage] = useState(null);
+    // const [inputImage, setInputImage] = useState(null);
     const [ bell, setBell ] = useState("")
   
-    const onChangeImageHandler = (e) => {
-        if (e.target.files[0]) {
-          console.log(e.target.files[0], "画像");
-          // 画像
-          setInputImage(e.target.files[0]);
-          // 入力部分をからにする
-          e.target.value = "";
-        }
-      };
+    // const onChangeImageHandler = (e) => {
+    //     if (e.target.files[0]) {
+    //       console.log(e.target.files[0], "画像");
+    //       // 画像
+    //       setInputImage(e.target.files[0]);
+    //       // 入力部分をからにする
+    //       e.target.value = "";
+    //     }
+    //   };
 
     return (
         <div>
@@ -85,21 +85,9 @@ const NumuItemChoice = () => {
 
                 </div>
 
-                <div className="itemWrap">
+                {/* <div className="itemWrap">
                 <div className="itemTitle">おそなえものはありますか？</div>
                     <input type="file" onChange={onChangeImageHandler} className="loginInput" />
-                </div>
-
-
-
-                {/* <div className="itemWrap">
-                <div className="itemTitle">お線香はどれにする？</div>
-                    <label>らべんだー</label>
-                    <input type="radio" name="smoke" value="らべんだー" onChange={(e) => setSmoke(e.target.value)}/>
-                    <label>にじ</label>
-                    <input type="radio" name="smoke" value="にじ" onChange={(e) => setSmoke(e.target.value)}/>
-                    <label>かとりせんこう</label>
-                    <input type="radio" name="smoke" value="かとりせんこう" onChange={(e) => setSmoke(e.target.value)}/>
                 </div> */}
 
                 <div className="itemWrap">
@@ -115,9 +103,6 @@ const NumuItemChoice = () => {
 
                 </div>
 
-                <span>おそなえものはありますか？</span><br/>
-                <span>（ここ、悪魔の写真アップロードなのでもし余裕があればやる程度）</span>
-
                 </form>
 
                 <div>
@@ -126,11 +111,9 @@ const NumuItemChoice = () => {
                         drink = {drink}
                         // smoke = {smoke}
                         bell = {bell}
-                        image = {inputImage}
+                        // image = {inputImage}
                     />
                 </div>
-
-
 
             </div>
         </div>
