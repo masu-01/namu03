@@ -38,7 +38,10 @@ const NumuItemCheck = ({flower,drink,smoke,bell}) => {
             選択したアイテムの確認 */}
 
             <div>
-                <button onClick={() => setIsOpen(true)}>確認する</button>
+                <div className="btnWrapGoogle">
+                    <button onClick={() => setIsOpen(true)} className="btnImageGoogle">確認する</button>
+                </div>
+
                 <Modal isOpen={modalIsOpen}>
                     <span>おはなは{flower}</span><br />
                     <span>のみものは{drink}</span><br />
@@ -47,16 +50,11 @@ const NumuItemCheck = ({flower,drink,smoke,bell}) => {
                     <button onClick={sendNamuSet}>決定する</button>
                     {/* <button onClick={() => window.location.href='/'}>決定する</button> */}
 
-
                     <button onClick={() => setIsOpen(false)}>戻る</button>
+                    
                 </Modal>
             </div>
 
-
-            
-            <div>
-            <a href="/">なむなむ（決定）</a>
-            </div>
         </div>
     )
 }

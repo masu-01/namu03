@@ -126,9 +126,33 @@ nav li:hover{
     background-color: #fffaf0;
 }
 
+.itemWrap input[type="radio"]{
+    display: none;
+}
+
+.itemWrap label img{
+    margin: 0 10px;
+    /* padding: 5px; */
+}
+
+/* 未選択のときに色を薄く */
+.itemWrap input[type="radio"] + label img{
+    opacity:0.6;
+    width: 80px;
+}
+
+/* 選択したときに色を濃くする */
+.itemWrap input[type="radio"]:checked + label img{
+    opacity:1;
+    border:solid #ff1493 2px;
+    border-radius: 15px;
+    width: 100px;
+}
+
+
 .itemTitle{
     font-size: 20px;
-    margin-bottom: 5px;
+    /* margin-bottom: 2px; */
 }
 /* ===================================== */
 

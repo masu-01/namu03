@@ -12,8 +12,8 @@ const Menu = (props) => {
         <div>
             <nav className="menuBg">
                 <ul>
-                    <li><a href="/regi"><img src={touroku} width="120px" alt="menu_touroku" /></a></li>
                     <li><a href="/"><img src={namunamu} width="120px" alt="menu_namunamu" /></a></li>
+                    <li><a href="/regi"><img src={touroku} width="120px" alt="menu_touroku" /></a></li>
                     <li><a href="/list"><img src={senzo} width="120px" alt="menu_senzo" /></a></li>
                     <li><a onClick={
                         async () => {
