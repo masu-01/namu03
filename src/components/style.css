@@ -1,50 +1,11 @@
 body{
-    font-family:"Meiryo",monospace ;
+    font-family:'游ゴシック',"メイリオ",monospace ;
     text-align: center;
 }
-
-hr{
-	height: 3px;
-    background: #ff1493;
-}
-
 
 .body-content {
     text-align: center;
   }
-
-nav ul{
-    display: table;
-    margin: 20px auto;
-    padding: 0 ;
-    width: 80%;
-    text-align: center;
-    }
-
-nav li{
-    display: table-cell;
-    min-width: 50px;
-    }
-
-nav a{
-    display: block;
-    width: 100%;
-    text-decoration: none;
-    color: #555;
-    padding-bottom: 5px;
-    }
-
-nav li.current{
-    border-bottom: 3px solid #92D050;
-    }
-
-nav li:hover{
-    color: #E7DA66;
-    font-weight: bold;
-    font-size: 24px;
-    font:#ff1493;
-    border-bottom: 3px solid #ff1493;
-    }
 
 .logoutButton{
     border: none;  /* 枠線を消す */
@@ -57,7 +18,6 @@ nav li:hover{
     padding-bottom: 5px;
     font-size: 16px;
     }
-
 
 .loginInput{
     margin: 15px;
@@ -91,7 +51,7 @@ nav li:hover{
     border: 1px solid #ffc0cb;
     border-radius: 30px;
     box-sizing: border-box;
-    padding: 0 45px 0 25px;
+    padding: 0 auto;
     color: #fff;
     font-size: 16px;
     font-weight: bold;
@@ -108,6 +68,72 @@ nav li:hover{
 }
 /* ===================================== */
 
+/* ==メニューデザイン======================= */
+nav {
+    padding-top: 1px;
+}
+nav ul{
+    display: table;
+    margin: 5px auto;
+    /* padding: 5px ; */
+    width: 80%;
+    text-align: center;
+    }
+
+nav li{
+    display: table-cell;
+    min-width: 50px;
+    }
+
+nav a{
+    display: block;
+    width: 100%;
+    text-decoration: none;
+    color: #555;
+    padding-bottom: 0;
+    padding-top: 3px;
+    margin: 0;
+    }
+
+nav li.current{
+    border-bottom: 3px solid #92D050;
+    }
+
+nav li:hover{
+    color: #E7DA66;
+    /* font-weight: bold;
+    font-size: 24px; */
+    /* font:#ff1493; */
+    border-bottom: 5px solid #ff1493;
+    }
+
+.menuBg{
+    background-color: #fff0f5;
+    border-bottom: solid #ff1493;
+    vertical-align: bottom;
+    /* margin-bottom: 20px; */
+    /* padding: 1px; */
+    /* margin: 3px; */
+}
+/* ===================================== */
+
+/* ==アイテム選択画面（NamuItemChoice）======================= */
+.itemWrap{
+    border: solid 1px #ffc0cb;
+    border-radius: 15px;
+    margin: 5px;
+    padding:10px;
+    background-color: #fffaf0;
+}
+
+.itemTitle{
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+/* ===================================== */
+
+
 
 /* ==******======================= */
+
 /* ===================================== */
