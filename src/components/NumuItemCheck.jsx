@@ -6,7 +6,7 @@ import Menu from './Menu'
 
 Modal.setAppElement("#root");
 
-const NumuItemCheck = ({flower,drink,smoke,bell}) => {
+const NumuItemCheck = ({flower,drink,bell,image}) => {
     // UID取得＝＝＝＝＝＝
     const [currentUser, setCurrentUser] = useState("")
     auth.onAuthStateChanged(user => {
@@ -23,7 +23,8 @@ const NumuItemCheck = ({flower,drink,smoke,bell}) => {
             image:"",
             flower: flower,
             drink: drink,
-            smoke: smoke,
+            // smoke: smoke,
+            img: image,
             bell: bell,
             timestamp: firebase.firestore.FieldValue.serverTimestamp(),
             uid: currentUser.uid,
@@ -45,7 +46,7 @@ const NumuItemCheck = ({flower,drink,smoke,bell}) => {
                 <Modal isOpen={modalIsOpen}>
                     <span>おはなは{flower}</span><br />
                     <span>のみものは{drink}</span><br />
-                    <span>おせんこうは{smoke}</span><br />
+                    <span>おそなえものは{image}</span><br />
                     <span>おりんは{bell}</span><br />
                     <button onClick={sendNamuSet}>決定する</button>
                     {/* <button onClick={() => window.location.href='/'}>決定する</button> */}

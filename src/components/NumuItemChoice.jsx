@@ -13,28 +13,29 @@ import coffee from "../img/drink/coffee.png"
 import mizu from "../img/drink/mizu.png"
 import sake from "../img/drink/sake.png"
 import tea from "../img/drink/tea.png"
+import standard from "../img/bell/standard.png"
+import kane from "../img/bell/kane.png"
+import bell02 from "../img/bell/bell02.png"
+
 
 
 const NumuItemChoice = () => {
 
     const [ flower, setFlower ] = useState("")
     const [ drink, setDrink ] = useState("")
-    const [ smoke, setSmoke ] = useState("")
+    // const [ smoke, setSmoke ] = useState("")
+    const [inputImage, setInputImage] = useState(null);
     const [ bell, setBell ] = useState("")
   
-  
-    // const checkItem = (e) => {
-    //   console.log(flower)
-    //   console.log(drink)
-    //   console.log(smoke)
-    //   console.log(bell)
-  
-    //   e.preventDefault();
-  
-    //   alert("こちらでよろしいですか "+flower+"/"+drink+"/"+smoke+"/"+bell)
-  
-    // }
-
+    const onChangeImageHandler = (e) => {
+        if (e.target.files[0]) {
+          console.log(e.target.files[0], "画像");
+          // 画像
+          setInputImage(e.target.files[0]);
+          // 入力部分をからにする
+          e.target.value = "";
+        }
+      };
 
     return (
         <div>
@@ -84,7 +85,12 @@ const NumuItemChoice = () => {
 
                 </div>
 
-                
+                <div className="itemWrap">
+                <div className="itemTitle">おそなえものはありますか？</div>
+                    <input type="file" onChange={onChangeImageHandler} className="loginInput" />
+                </div>
+
+
 
                 {/* <div className="itemWrap">
                 <div className="itemTitle">お線香はどれにする？</div>
@@ -98,12 +104,15 @@ const NumuItemChoice = () => {
 
                 <div className="itemWrap">
                 <div className="itemTitle">お鈴はどれにする？</div>
-                    <label>ふつう</label>
-                    <input type="radio" name="bell" value="ふつう" onChange={(e) => setBell(e.target.value)}/>
-                    <label>とらいあんぐる</label>
-                    <input type="radio" name="bell" value="とらいあんぐる" onChange={(e) => setBell(e.target.value)}/>
-                    <label>てらのかね</label>
-                    <input type="radio" name="bell" value="てらのかね" onChange={(e) => setBell(e.target.value)}/>
+                    <input id="standart" type="radio" name="bell" value="ふつう" onChange={(e) => setBell(e.target.value)}/>
+                    <label for="standart" ><img src={standard} alt="standard" /></label>
+
+                    <input id="bell" type="radio" name="bell" value="べる" onChange={(e) => setBell(e.target.value)}/>
+                    <label for="bell" ><img src={bell02} alt="bell" /></label>
+
+                    <input id="kane" type="radio" name="kane" value="かね" onChange={(e) => setBell(e.target.value)}/>
+                    <label for="kane" ><img src={kane} alt="kane" /></label>
+
                 </div>
 
                 <span>おそなえものはありますか？</span><br/>
@@ -115,8 +124,9 @@ const NumuItemChoice = () => {
                     <NumuItemCheck
                         flower = {flower}
                         drink = {drink}
-                        smoke = {smoke}
+                        // smoke = {smoke}
                         bell = {bell}
+                        image = {inputImage}
                     />
                 </div>
 
