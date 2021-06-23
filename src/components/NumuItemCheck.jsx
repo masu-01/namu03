@@ -66,16 +66,34 @@ const NumuItemCheck = ({flower,drink,bell}) => {
 
                 <Modal isOpen={modalIsOpen}>
                     
-                    <span>おはなは{flower}</span><br />
-                    <span>のみものは{drink}</span><br />
-                    {/* <span>おそなえものは{image}</span><br /> */}
-                    <span>おりんは{bell}</span><br />
+                    <span className="itemCheckItem">
+                        {flower == "ばら" && <img src={bara} className="itemCheckImg" />}
+                        {flower == "きく" && <img src={kiku} className="itemCheckImg" />}
+                        {flower == "さくら" && <img src={sakura} className="itemCheckImg" />}
+                        {flower == "がーべら" && <img src={garbela} className="itemCheckImg" />}
+                        {flower == "こすもす" && <img src={cosmos} className="itemCheckImg" />}
+                        {flower == "ひまわり" && <img src={himawari} className="itemCheckImg" />}
+                    </span>
+                    <span className="itemCheckItem">
+                        {drink == "みず" && <img src={mizu} className="itemCheckImg" />}
+                        {drink == "さけ" && <img src={sake} className="itemCheckImg" />}
+                        {drink == "こーひー" && <img src={coffee} className="itemCheckImg" />}
+                        {drink == "びーる" && <img src={beer} className="itemCheckImg" />}
+                        {drink == "おちゃ" && <img src={tea} className="itemCheckImg" />}
+                    </span>
+                    <span className="itemCheckItem">
+                        {bell == "ふつう" && <img src={standard} className="itemCheckImg" />}
+                        {bell == "かね" && <img src={kane} className="itemCheckImg" />}
+                        {bell == "べる" && <img src={bell02} className="itemCheckImg" />}
+                    </span>
                     <div className="btnWrapGoogle">
                         <Link to="/" className="btnImageGoogle" onClick={sendNamuSet}>決定する</Link>
                     </div>
                     {/* <button onClick={() => window.location.href='/'}>決定する</button> */}
 
-                    <button onClick={() => setIsOpen(false)}>戻る</button>
+                    <div className="btnWrapGoogle">
+                    <button className="btnBack" onClick={() => setIsOpen(false)}>戻る</button>
+                    </div>
                     
                 </Modal>
             </div>
