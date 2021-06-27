@@ -94,6 +94,7 @@ const Regi = (props) => {
             const res = await db.collection("group").add({
               image: url,
               name: name,
+              relation: relation,
               bday: bday,
               dday: dday,
               timestamp: firebase.firestore.FieldValue.serverTimestamp(),
@@ -109,25 +110,40 @@ const Regi = (props) => {
             // ▲ ここに移動させる
 
             // ▼ ここにカレンダー登録書いてみる＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
-                  // 2.認証チェック
+            const calSummary = "【命日】"+ name + "さん";
+            const calDiscription = "続柄：" + relation;
+            const dateTimeS = dday+"T08:00:00"
+            const dateTimeE = dday+"T09:00:00"
+            const dateMonth = new Date(dday);
+            const month = dateMonth.getMonth()+1
+            const day = dateMonth.getDate()
+            const recurrence = "RRULE:FREQ=YEARLY;BYMONTHDAY="+day+";BYMONTH="+month
+
+            console.log("繰り返しの月日",recurrence)
+
+
+            // console.log(dateTimeS)
+
+                  // 2.認証チェッく
                   if (ApiCalendar.sign) {
                     console.log("認証ok")
                     const event = {
-                      summary: 'テストです。予定のタイトル',
-                      description: '登録できますか？イベントの説明文',
+                      summary: calSummary,
+                      description: calDiscription,
                       start: {
-                        'dateTime': '2021-06-28T08:00:00',
+                        'dateTime': dateTimeS,
                         'timeZone': 'Asia/Tokyo'
                       },
                       end: {
-                        'dateTime': '2021-06-28T09:00:00',
+                        'dateTime': dateTimeE,
                         'timeZone': 'Asia/Tokyo'
                       },
-                      // ここの繰り返しを「毎年」
+                      // 繰り返し「毎年」
                       recurrence: [
-                        'RRULE:FREQ=YEARLY;BYMONTHDAY=28;BYMONTH=6'
+                        recurrence
                       ],
-                      // リマインダーを当日の９時とかにする
+                      // リマインダーを当日の９時とかにする←終日の予定にするとできなかったので
+                      // 8ｰ9時の予定を追加して、8時にリマインダーセット
                       reminders: {
                         'useDefault': false,
                         'overrides': [
@@ -220,7 +236,7 @@ const Regi = (props) => {
         </div>
         <div>
           <input
-            type="text"
+            type="date"
             placeholder="誕生日"
             className="loginInput"
             autoFocus
@@ -230,7 +246,7 @@ const Regi = (props) => {
         </div>
         <div>
           <input
-            type="text"
+            type="date"
             placeholder="命日"
             className="loginInput"
             autoFocus
