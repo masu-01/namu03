@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { db, storage, auth } from '../firebase';
 import firebase from 'firebase/app';
+import ApiCalendar from "react-google-calendar-api";
 import Menu from './Menu';
 import "./style.css"
 
@@ -94,6 +95,7 @@ const Regi = (props) => {
               image: url,
               name: name,
               bday: bday,
+              dday: dday,
               timestamp: firebase.firestore.FieldValue.serverTimestamp(),
               uid: currentUser.uid,
             });
@@ -101,15 +103,58 @@ const Regi = (props) => {
             // ▼ ここに移動
             setName("");
             setBday("");
+            setDday("");
             setInputImage("");
             alert("登録しました (画像+投稿)");
             // ▲ ここに移動させる
+
+            // ▼ ここにカレンダー登録書いてみる＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+                  // 2.認証チェック
+                  if (ApiCalendar.sign) {
+                    console.log("認証ok")
+                    const event = {
+                      summary: 'テストです。予定のタイトル',
+                      description: '登録できますか？イベントの説明文',
+                      start: {
+                        'dateTime': '2021-06-28T08:00:00',
+                        'timeZone': 'Asia/Tokyo'
+                      },
+                      end: {
+                        'dateTime': '2021-06-28T09:00:00',
+                        'timeZone': 'Asia/Tokyo'
+                      },
+                      // ここの繰り返しを「毎年」
+                      recurrence: [
+                        'RRULE:FREQ=YEARLY;BYMONTHDAY=28;BYMONTH=6'
+                      ],
+                      // リマインダーを当日の９時とかにする
+                      reminders: {
+                        'useDefault': false,
+                        'overrides': [
+                          // {'method': 'email', 'minutes': 24 * 60},
+                          {'method': 'popup', 'minutes': 0},
+                        ]
+                      }
+                    };
+                    console.log("event", event)
+
+                    await ApiCalendar.createEvent(event);
+
+
+                  }else {
+                          // 2’.認証していなければOAuth認証
+                          ApiCalendar.handleAuthClick();
+                  }
+            // ▲ ここにカレンダー登録書いてみる＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+
           } catch(error) {
             console.log(error)
             alert("登録に失敗しました", error.message);
           }
         }
       );
+
+
 
       setName("");
       setRelation("");

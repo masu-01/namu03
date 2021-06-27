@@ -9,8 +9,8 @@ import logout from '../img/menu/logout.png'
 
 const Menu = (props) => {
     return (
-        <div>
-            <nav className="menuBg">
+        <div className="menuBg">
+            <nav>
                 <ul>
                     <li><a href="/"><img src={namunamu} width="120px" alt="menu_namunamu" /></a></li>
                     <li><a href="/regi"><img src={touroku} width="120px" alt="menu_touroku" /></a></li>

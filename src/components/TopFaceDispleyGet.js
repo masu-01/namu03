@@ -54,7 +54,7 @@ const Feed = (props) => {
             const firebaseData = db
             .collection("group")
             .where("uid", "==", uid)
-            // .orderBy("timestamp", "desc")
+            .orderBy("timestamp", "desc")
             .onSnapshot((snapshot) =>
             setGroup(
                 snapshot.docs.map((doc) => ({   // 「docs」はfirebaseの用語、「doc」は「docs」のなかの1件ずつのこと

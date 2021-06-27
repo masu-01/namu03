@@ -2,8 +2,8 @@
 
 import React, { useState, useEffect } from 'react'
 import { db, auth } from '../firebase'
-import Menu from './Menu'
-import Post from './Post'
+import Menu from '../components/Menu'
+import Post from '../components/Post'
 
 const ListTest = (props) => {
     // ==ログイン認証セット===================================================

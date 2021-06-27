@@ -2,11 +2,6 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -38,6 +33,7 @@
 }
 
 .contents{
+  width: 100%;
   background-color:#fff8dc ;
   padding: 10px;
   border-bottom: solid #ff1493;
@@ -104,6 +100,6 @@
 .namuLogData{
 margin: 3px auto;
 height: 300px;
-width: 700px;
+width: 80%;
 overflow: auto;
 }

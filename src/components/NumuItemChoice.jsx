@@ -98,7 +98,7 @@ const NumuItemChoice = () => {
                     <input id="bell" type="radio" name="bell" value="べる" onChange={(e) => setBell(e.target.value)}/>
                     <label for="bell" ><img src={bell02} alt="bell" /></label>
 
-                    <input id="kane" type="radio" name="kane" value="かね" onChange={(e) => setBell(e.target.value)}/>
+                    <input id="kane" type="radio" name="bell" value="かね" onChange={(e) => setBell(e.target.value)}/>
                     <label for="kane" ><img src={kane} alt="kane" /></label>
 
                 </div>
