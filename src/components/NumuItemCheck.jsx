@@ -1,11 +1,10 @@
 import React,{ useState } from 'react'
 import {Link} from "react-router-dom"
-import ReactDOM from "react-dom";
-import { motion, useAnimation } from "framer-motion";
 import Modal from 'react-modal'
 import { db, auth} from '../firebase';
 import firebase from 'firebase/app';
-import Menu from './Menu'
+import "./style.css"
+
 import kiku from "../img/flower/kiku.png"
 import sakura from "../img/flower/sakura.png"
 import cosmos from "../img/flower/cosmos.png"
@@ -46,6 +45,8 @@ const NumuItemCheck = ({flower,drink,bell}) => {
             timestamp: firebase.firestore.FieldValue.serverTimestamp(),
             uid: currentUser.uid,
         })
+
+    //   props.history.push("namunamu")
         
     }
 
@@ -70,7 +71,7 @@ const NumuItemCheck = ({flower,drink,bell}) => {
                         {flower == "ひまわり" && <img src={himawari} className="itemCheckImg" />}
                     </span>
                     <span className="itemCheckItem">
-                        {drink == "みず" && <img src={mizu} className="itemCheckImg" />}
+                        {drink == "おみず" && <img src={mizu} className="itemCheckImg" />}
                         {drink == "さけ" && <img src={sake} className="itemCheckImg" />}
                         {drink == "こーひー" && <img src={coffee} className="itemCheckImg" />}
                         {drink == "びーる" && <img src={beer} className="itemCheckImg" />}
@@ -82,7 +83,7 @@ const NumuItemCheck = ({flower,drink,bell}) => {
                         {bell == "べる" && <img src={bell02} className="itemCheckImg" />}
                     </span>
                     <div className="btnWrapGoogle">
-                        <Link to="/" className="btnImageGoogle" onClick={sendNamuSet}>決定する</Link>
+                        <Link to="/namunamu" className="btnImageGoogle" onClick={sendNamuSet}>決定する</Link>
                     </div>
                     {/* <button onClick={() => window.location.href='/'}>決定する</button> */}
 

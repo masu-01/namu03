@@ -35,7 +35,7 @@ const NamuLogDispley = ({ flower, drink, bell, timestamp}) => {
                             {flower == "ひまわり" && <img src={himawari} className="namulogImg" />}
                         </span>
                         <span className="span-head03">
-                            {drink == "みず" && <img src={mizu} className="namulogImg" />}
+                            {drink == "おみず" && <img src={mizu} className="namulogImg" />}
                             {drink == "さけ" && <img src={sake} className="namulogImg" />}
                             {drink == "こーひー" && <img src={coffee} className="namulogImg" />}
                             {drink == "びーる" && <img src={beer} className="namulogImg" />}

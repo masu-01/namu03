@@ -7,8 +7,9 @@ import { Route, BrowserRouter } from 'react-router-dom';
 import List from './components/List'
 import Regi from './components/Regi'
 import NumuItemChoice from './components/NumuItemChoice'
-import NumuItemCheck from './components/NumuItemCheck'
 import Glogin from './components/Glogin'
+import NumuItemCheck from './components/NumuItemCheck';
+import NamuAnimation from './components/NamuAnimation';
 
 
 // import ListTest from './components/ListTest'
@@ -37,6 +38,8 @@ ReactDOM.render(
 
       {/* なむなむのアイテム確認 */}
       <Route exact path="/check" component={NumuItemCheck} />
+
+      <Route exact path="/namunamu" component={NamuAnimation} />
 
       {/* <Route exact path="/listtest" component={ListTest} /> */}
 
