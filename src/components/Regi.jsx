@@ -212,7 +212,9 @@ const Regi = (props) => {
       {/* formタグを使います */}
       <form onSubmit={sendTweet}>
         <div>
-          <input type="file" onChange={onChangeImageHandler} className="loginInput" />
+          <label className="regiFace">
+          <input type="file" onChange={onChangeImageHandler} className="regiInput" />
+          写真を登録してください</label>
         </div>
         <div>
           <input
@@ -235,6 +237,7 @@ const Regi = (props) => {
           />
         </div>
         <div>
+          <label>お誕生日</label>
           <input
             type="date"
             placeholder="誕生日"
@@ -245,6 +248,7 @@ const Regi = (props) => {
           />
         </div>
         <div>
+        <label>命日</label>
           <input
             type="date"
             placeholder="命日"

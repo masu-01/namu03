@@ -1,8 +1,8 @@
 import React,{ useEffect } from 'react';
 import {Link} from "react-router-dom"
-// import React,{ useState, useEffect } from 'react';
 import { auth } from './firebase'
-// import { db, auth } from './firebase'
+import "bootstrap/dist/css/bootstrap.min.css"
+import MediaQuery from 'react-responsive'
 import './App.css';
 import "../src/components/style.css"
 import Menu from './components/Menu';
@@ -35,18 +35,18 @@ function App(props) {
       
         <Menu />
 
-        <div className="contents">
+        <div
+          className="contents"
+          style={{backgroundImage:'url('+butsudan+')',height:'600px',backgroundRepeat:'no-repeat',backgroundSize:'100% auto'}}
+        >
+          <div className="contentsInner">
+            <div className="topFaceContainer">
+              <TopFaceDispleyGet />
+            </div>
 
-          <div className="topBgi" >
-            <img src={butsudan} height="400px" />
-          </div>
-
-          <div className="topFaceContainer">
-          <TopFaceDispleyGet />
-          </div>
-
-          <div className="btnWrapNamu">
-            <Link to="/choice" className="btnImageNamu">なむなむする</Link>
+            <div className="btnWrapNamu">
+                <Link to="/choice" className="btnImageNamu">なむなむする</Link>
+            </div>
           </div>
 
         </div>

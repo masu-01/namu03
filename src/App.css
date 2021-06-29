@@ -33,27 +33,39 @@
 }
 
 .contents{
-  width: 100%;
+  vertical-align: bottom;
+  align-items: bottom;
+  width:100%;
+  text-align: center;
   background-color:#fff8dc ;
-  padding: 10px;
   border-bottom: solid #ff1493;
+  display: table;
+  /* position: relative; */
 }
+
+.contentsInner{
+  /* position: absolute; */
+  /* bottom: 0%; */
+  margin:0 auto;
+  /* display: inline-block; */
+  vertical-align:bottom;
+  width: 95%;
+  display: table-cell;
+  /* align-items: center; */
+  /* justify-content: center ; */
+  /* transform: translateY(-50%) translateX(-50%); */
+  /* -webkit- transform: translateY(-50%) translateX(-50%); */
+}
+
 
 /* 仏壇写真＝＝＝＝＝＝＝＝＝ */
-.topBgi{
-  padding: 10px;
-}
-
 .topFaceContainer{
-  /* text-align: center; */
   display: flex;
-  /* width: 90%; */
-  /* position: relative;
-  left: 50% */
-  
-  /* align-items: center; */
-  /* margin: 0 auto; */
   justify-content: center;
+  background-color: rgb(128,128,128,0.5);
+  border-radius:15px;
+  /* margin:10px auto; */
+  /* opacity: 0.5; */
 }
 
 /* ＝＝＝＝＝＝＝＝＝＝＝＝＝ */
@@ -61,7 +73,7 @@
 /* なむなむボタン＝＝＝＝＝＝＝＝＝＝＝＝＝＝ */
 .btnWrapNamu{
   max-width: 250px;
-  margin: 20px auto;
+  margin: 10px auto;
 }
 
 .btnImageNamu{
