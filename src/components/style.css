@@ -165,9 +165,11 @@ nav li:hover{
 }
 
 .logUl{
+    width: 100%;
     list-style: none;
     display: inline-block;
     text-align: left;
+    font-size: 10px;
 }
 
 .list-row {

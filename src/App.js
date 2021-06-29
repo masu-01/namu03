@@ -31,34 +31,66 @@ function App(props) {
 
 
   return (
-    <div className="App">
-      
-        <Menu />
+    <>
+    <MediaQuery query="(max-width:576px)">
+      <div className="App">        
+          <Menu />
+          <div
+            className="contents"
+            style={{backgroundImage:'url('+butsudan+')',height:'600px',backgroundRepeat:'no-repeat',backgroundSize:'100% auto'}}
+          >
+            <div className="contentsInner">
+              <div className="topFaceContainer">
+                <TopFaceDispleyGet />
+              </div>
 
-        <div
-          className="contents"
-          style={{backgroundImage:'url('+butsudan+')',height:'600px',backgroundRepeat:'no-repeat',backgroundSize:'100% auto'}}
-        >
-          <div className="contentsInner">
-            <div className="topFaceContainer">
-              <TopFaceDispleyGet />
+              <div className="btnWrapNamu">
+                  <Link to="/choice" className="btnImageNamu">なむなむする</Link>
+              </div>
             </div>
 
-            <div className="btnWrapNamu">
-                <Link to="/choice" className="btnImageNamu">なむなむする</Link>
-            </div>
           </div>
 
-        </div>
+          <div className="namuLogArea">
+            <div>あなたのなむログ</div>
+            <div className="namuLogData">
+            <NamuLog />
+            </div>
+          </div>
+          
+      </div>
+    </MediaQuery>
 
-        <div className="namuLogArea">
+    <MediaQuery query="(min-width:577px)">
+    <div className="App">
+      <div>
+        <Menu />
+        <div className="contents">
+          <div className="topBgi" >
+            <img src={butsudan} height="400px" />
+          </div>
+
+        <div className="contents">
+          <TopFaceDispleyGet />
+          <div className="btnWrapNamu">
+          <Link to="/choice" className="btnImageNamu">なむなむする</Link>
+          </div>
+        </div>
+      </div>
+       <hr />
+
+      </div>
+
+      <div className="namuLogArea">
         <div>あなたのなむログ</div>
         <div className="namuLogData">
-        <NamuLog />
-        </div>
-        </div>
-        
+          <NamuLog />
+        </div>        
+      </div>
+
     </div>
+    </MediaQuery>
+    </>
   );
 }
 
