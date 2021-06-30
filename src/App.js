@@ -9,9 +9,6 @@ import Menu from './components/Menu';
 import NamuLog from './components/NamuLog';
 import TopFaceDispleyGet from './components/TopFaceDispleyGet';
 import butsudan from './img/butsudan.png';
-import { withWidth } from '@material-ui/core';
-
-// import NumuItemChoice from './components/NumuItemChoice';
 
 function App(props) {
 
@@ -41,7 +38,9 @@ function App(props) {
           >
             <div className="contentsInner">
               <div className="topFaceContainer">
+                <div className="ok" >
                 <TopFaceDispleyGet />
+                </div>
               </div>
 
               <div className="btnWrapNamu">

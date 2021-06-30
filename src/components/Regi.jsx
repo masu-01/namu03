@@ -3,9 +3,12 @@
 import React, { useState, useEffect } from 'react';
 import { db, storage, auth } from '../firebase';
 import firebase from 'firebase/app';
+import MediaQuery from 'react-responsive'
 import ApiCalendar from "react-google-calendar-api";
 import Menu from './Menu';
 import "./style.css"
+import "bootstrap/dist/css/bootstrap.min.css"
+
 
 
 const Regi = (props) => {
@@ -200,72 +203,143 @@ const Regi = (props) => {
   };
 
   return (
-    <div className="body-content">
-        <Menu />
+    <>
+      <MediaQuery query="(max-width:576px)">
+      <div className="body-content">
+          <Menu />
 
-      {/* UID取れてるか確認 */}
-      {/* <span>ログインUID:{currentUser.uid}</span> */}
+        {/* 登録の担当をするパーツ（コンポーネント） */}
+        {/* TweetInputではinputタグや送信ボタンを置いて、firebaseにデータを登録するものを記述します */}
+        <h1 className="titleText">★ぜんぞとうろく★</h1>
+        {/* formタグを使います */}
+        <form onSubmit={sendTweet}>
+          {/* なまえ */}
+          <div class="mb-3 regiForm">
+            <label class="form-label">なまえ</label>
+            <input
+             type="text"
+             placeholder="なまえを入力してください"
+             class="form-control"
+             autoFocus
+             value={name}
+             onChange={(e) => setName(e.target.value)}
+             />
+          </div>
 
-      {/* 登録の担当をするパーツ（コンポーネント） */}
-      {/* TweetInputではinputタグや送信ボタンを置いて、firebaseにデータを登録するものを記述します */}
-      <h1 className="titleText">登録してください</h1>
-      {/* formタグを使います */}
-      <form onSubmit={sendTweet}>
-        <div>
-          <label className="regiFace">
-          <input type="file" onChange={onChangeImageHandler} className="regiInput" />
-          写真を登録してください</label>
-        </div>
-        <div>
-          <input
-            type="text"
-            placeholder="なまえ"
-            className="loginInput"
-            autoFocus
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-        </div>
-        <div>
-          <input
-            type="text"
-            placeholder="続柄"
-            className="loginInput"
-            autoFocus
-            value={relation}
-            onChange={(e) => setRelation(e.target.value)}
-          />
-        </div>
-        <div>
-          <label>お誕生日</label>
-          <input
-            type="date"
-            placeholder="誕生日"
-            className="loginInput"
-            autoFocus
-            value={bday}
-            onChange={(e) => setBday(e.target.value)}
-          />
-        </div>
-        <div>
-        <label>命日</label>
-          <input
-            type="date"
-            placeholder="命日"
-            className="loginInput"
-            autoFocus
-            value={dday}
-            onChange={(e) => setDday(e.target.value)}
-          />
-        </div>
-        <div>
-          <button type="submit" disabled={!name}>
-            登録
-          </button>
-          </div> 
-          <p>ボタン押したら、登録完了と表示されるまで待ってね</p>
-      </form>
-    </div>
+          {/* ぞくがら */}
+          <div class="mb-3 regiForm">
+            <label class="form-label">ぞくがら</label>
+            <input
+             type="text"
+             placeholder="続柄を入力してください"
+             class="form-control"
+             value={relation}
+             onChange={(e) => setRelation(e.target.value)}
+              />
+          </div>
+
+          {/* 生年月日 */}
+          <div class="mb-3 regiForm">
+            <label class="form-label">たんじょうび</label>
+            <input
+              type="date"
+              class="form-control"
+              value={bday}
+              onChange={(e) => setBday(e.target.value)}
+               />
+          </div>
+
+          {/* 命日 */}
+          <div class="mb-3 regiForm">
+            <label class="form-label">めいにち</label>
+            <input
+              type="date"
+              class="form-control"
+              value={dday}
+              onChange={(e) => setDday(e.target.value)}
+             />
+             <span>※命日はGoogleカレンダーに登録されます</span>
+          </div>
+
+
+
+          <div class="mb-3 regiForm">
+            <label for="formFile" class="form-label">写真ありますか？</label>
+            <input class="form-control" type="file" id="formFile" />
+          </div>
+
+            <p>ボタン押したら、登録完了と表示されるまで待ってね</p>
+        </form>
+      </div>
+      </MediaQuery>
+
+
+      <MediaQuery query="(min-width:577px)">
+        <div className="body-content">
+            <Menu />
+
+          {/* 登録の担当をするパーツ（コンポーネント） */}
+          {/* TweetInputではinputタグや送信ボタンを置いて、firebaseにデータを登録するものを記述します */}
+          <h1 className="titleText">登録してください</h1>
+          {/* formタグを使います */}
+          <form onSubmit={sendTweet}>
+              <div>
+              <label>
+              <input type="file" onChange={onChangeImageHandler} className="regiInput" />
+              写真を登録してください</label>
+            </div>
+            <div>
+              <input
+                type="text"
+                placeholder="なまえ"
+                className="loginInput"
+                autoFocus
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <div>
+              <input
+                type="text"
+                placeholder="続柄"
+                className="loginInput"
+                autoFocus
+                value={relation}
+                onChange={(e) => setRelation(e.target.value)}
+              />
+            </div>
+            <div>
+              <label>お誕生日</label>
+              <input
+                type="date"
+                placeholder="誕生日"
+                className="loginInput"
+                autoFocus
+                value={bday}
+                onChange={(e) => setBday(e.target.value)}
+              />
+            </div>
+            <div>
+            <label>命日</label>
+              <input
+                type="date"
+                placeholder="命日"
+                className="loginInput"
+                autoFocus
+                value={dday}
+                onChange={(e) => setDday(e.target.value)}
+              />
+            </div>
+            <div>
+              <button type="submit" disabled={!name}>
+                登録
+              </button>
+              </div> 
+              <p>ボタン押したら、登録完了と表示されるまで待ってね</p>
+          </form>
+          </div>
+      </MediaQuery>
+    </>
   );
 };
 

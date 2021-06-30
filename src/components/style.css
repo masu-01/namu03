@@ -2,10 +2,13 @@ body{
     font-family:'游ゴシック',"メイリオ",monospace ;
     text-align: center;
     align-items: center;
+    width:100%
 }
 
 .body-content {
     text-align: center;
+    align-items: center;
+    width:100%;
   }
 
 .logoutButton{
@@ -125,6 +128,26 @@ nav li:hover{
 /* ===================================== */
 
 /* ==TOPページ======================= */
+.topFaceContainer{
+    width:98%;
+    /* padding: 10px,10px; */
+    /* display: inline-block; */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    background-color: rgb(128,128,128,0.5);
+    border-radius:15px;
+    margin:0 auto;
+    /* opacity: 0.5; */
+    /* overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch; */
+  }
+
+.ok{
+    padding: 15px;
+}
 
 .topFaceDate{
     /* overflow: hidden; */
@@ -133,7 +156,9 @@ nav li:hover{
     float:left;
     /* display: inline-block; */
     /* max-width: 80% ; */
-    margin: 10px 15px;
+    min-width: 20%;
+    margin: 8px 6px;
+    flex-basis: 25%;
   }
 
 .topFaceImage{
@@ -363,6 +388,12 @@ nav li:hover{
 
 
 /* ==登録画面======================= */
+.regiForm{
+    margin: 0 auto;
+    text-align: left;
+    width: 80%;
+}
+
 .regiInput{
     display: none;
     margin: 15px;

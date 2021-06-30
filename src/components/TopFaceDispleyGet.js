@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from 'react'
 import { db, auth } from '../firebase'
-import Menu from './Menu';
 import TopFaceDispley from './TopFaceDispley'
 
 

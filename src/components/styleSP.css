@@ -2,6 +2,7 @@ body{
     font-family:'游ゴシック',"メイリオ",monospace ;
     text-align: center;
     align-items: center;
+    width:100%
 }
 
 .body-content {

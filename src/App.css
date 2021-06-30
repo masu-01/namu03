@@ -1,12 +1,13 @@
 .App {
   text-align: center;
+  width: 100%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
+/* @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
-}
+} */
 
 .App-header {
   background-color: #282c34;
@@ -19,10 +20,10 @@
   color: white;
 }
 
-.App-link {
+/* .App-link {
   color: #61dafb;
-}
-
+} */
+/* 
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -30,7 +31,7 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
 
 .contents{
   vertical-align: bottom;
@@ -40,35 +41,29 @@
   background-color:#fff8dc ;
   border-bottom: solid #ff1493;
   display: table;
+  /* margin: 0 auto;
+  justify-content: center; */
   /* position: relative; */
 }
 
 .contentsInner{
   /* position: absolute; */
   /* bottom: 0%; */
-  margin:0 auto;
+  /* margin:0 auto; */
   /* display: inline-block; */
   vertical-align:bottom;
-  width: 95%;
+  width: 100%;
+  /* display: flex; */
   display: table-cell;
   /* align-items: center; */
-  /* justify-content: center ; */
+  justify-content: center ;
+  /* align-items: center; */
+  /* text-align: center; */
   /* transform: translateY(-50%) translateX(-50%); */
   /* -webkit- transform: translateY(-50%) translateX(-50%); */
 }
 
 
-/* 仏壇写真＝＝＝＝＝＝＝＝＝ */
-.topFaceContainer{
-  display: flex;
-  justify-content: center;
-  background-color: rgb(128,128,128,0.5);
-  border-radius:15px;
-  /* margin:10px auto; */
-  /* opacity: 0.5; */
-}
-
-/* ＝＝＝＝＝＝＝＝＝＝＝＝＝ */
 
 /* なむなむボタン＝＝＝＝＝＝＝＝＝＝＝＝＝＝ */
 .btnWrapNamu{
