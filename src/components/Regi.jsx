@@ -258,17 +258,19 @@ const Regi = (props) => {
               value={dday}
               onChange={(e) => setDday(e.target.value)}
              />
-             <span>※命日はGoogleカレンダーに登録されます</span>
+             <span className="regiText">※命日はGoogleカレンダーに登録されます</span>
           </div>
-
-
 
           <div class="mb-3 regiForm">
-            <label for="formFile" class="form-label">写真ありますか？</label>
-            <input class="form-control" type="file" id="formFile" />
+            <label class="form-label">写真ありますか？</label>
+            <input class="form-control" type="file" onChange={onChangeImageHandler} />
           </div>
 
-            <p>ボタン押したら、登録完了と表示されるまで待ってね</p>
+          <div>
+          <button type="submit" class="btn btn-outline-warning" disabled={!name}>とうろく</button>
+          </div>
+
+            <span className="regiText">ボタン押したら、登録完了と表示されるまで待ってね</span>
         </form>
       </div>
       </MediaQuery>

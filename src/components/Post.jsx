@@ -4,6 +4,8 @@
 
 import React from 'react';
 import { db, storage } from '../firebase';
+import MediaQuery from 'react-responsive'
+import "bootstrap/dist/css/bootstrap.min.css"
 
 
 // propsを受け取る
@@ -16,6 +18,24 @@ const Post = ({ id, name, relation, bday, dday, image, uid, timestamp}) => {
     }
 
     return (
+        <>
+        <MediaQuery query="(max-width:576px)">
+        <div className="postCard">
+            <div className="postBox">
+                <img src={image} className="postImage" style={{height: '100%'}} />
+                <div className="postTextArea">
+                    <span class="postTitle">{name}</span>
+                    <span class="postContent">{relation}</span><br />
+                    <span class="postContent">誕生日：{bday}</span><br />
+                    <span class="postContent">命日：{dday}</span><br />
+                    <span class="postDelete" onClick={deleteInputData}>削除</span>
+                </div>
+            </div>
+        </div>
+        </MediaQuery>
+
+
+      <MediaQuery query="(min-width:577px)">
         <div>
             {/* imageを表示させる */}
             <div><img src={image} alt="" width="200px" height="auto" /></div>
@@ -39,6 +59,8 @@ const Post = ({ id, name, relation, bday, dday, image, uid, timestamp}) => {
 
             <hr />        
         </div>
+        </MediaQuery>
+        </>
     )
 }
 

@@ -38,7 +38,7 @@ function App(props) {
           >
             <div className="contentsInner">
               <div className="topFaceContainer">
-                <div className="ok" >
+                <div className="topFaceItem" >
                 <TopFaceDispleyGet />
                 </div>
               </div>

@@ -8,11 +8,9 @@ import List from './components/List'
 import Regi from './components/Regi'
 import NumuItemChoice from './components/NumuItemChoice'
 import Glogin from './components/Glogin'
-import NumuItemCheck from './components/NumuItemCheck';
-import NamuAnimation from './components/NamuAnimation';
+import NumuItemCheck from './components/NumuItemCheck'
+import NamuAnimation from './components/NamuAnimation'
 
-
-// import ListTest from './components/ListTest'
 
 ReactDOM.render(
   <BrowserRouter>

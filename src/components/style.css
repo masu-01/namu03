@@ -30,7 +30,6 @@ body{
 .titleText{
     font-family:"Hiragino Kaku Gothic ProN" ;
     font: 18px gray;
-    font-weight: bold;
 }
 
 /* ==ログインページ======================= */
@@ -135,18 +134,23 @@ nav li:hover{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: center;
+    /* justify-content: space-evenly; */
     background-color: rgb(128,128,128,0.5);
     border-radius:15px;
     margin:0 auto;
     /* opacity: 0.5; */
-    /* overflow-x: auto;
-    white-space: nowrap;
+    /* overflow-x: auto; */
+    /* height:100px */
+    /* white-space: nowrap;
     -webkit-overflow-scrolling: touch; */
   }
 
-.ok{
-    padding: 15px;
+.topFaceItem{
+    /* flex:0 0 auto; */
+    /* width:800px; */
+    padding: 5px;
+    /* justify-content: center; */
 }
 
 .topFaceDate{
@@ -404,15 +408,60 @@ nav li:hover{
     border-radius: 5px;
     padding:2px;
     background-color:gray
-
-
 }
 
+.regiText{
+    font-size:12px;
+}
 /* ===================================== */
 
 
 /* ==******======================= */
+.postCard{
+    width: 98%;
+    height: 100px;
+    margin: 4px auto;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 3px 6px #ccc;
+}
 
+.postBox{
+    display: flex;
+}
+
+.postImage{
+    width: 100px;
+    max-height: 100px;
+    object-fit: cover;
+    border-radius: 5px 0 0 5px;
+}
+
+.postTextArea{
+    /* width:100%; */
+    text-align: left;
+}
+
+.postTitle{
+    font-size: 130%;
+    width:100%;
+    margin: 2px;
+    color: #444;
+}
+
+.postContent{
+    padding: 2px;
+    font-size: 80%;
+    color: #666;
+    margin: 0;
+}
+
+.postDelete{
+    padding: 2px;
+    font-size: 80%;
+    color: #d3d3d3;
+    margin: 0;
+}
 /* ===================================== */
 
 /* ==******======================= */
