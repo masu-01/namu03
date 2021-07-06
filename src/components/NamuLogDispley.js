@@ -17,7 +17,7 @@ import kane from "../img/bell/kane.png"
 import bell02 from "../img/bell/bell02.png"
 
 
-const NamuLogDispley = ({ flower, drink, bell, timestamp}) => {
+const NamuLogDispley = ({ flower, drink, bell, timestamp,image}) => {
 
     return (
         <>
@@ -43,6 +43,9 @@ const NamuLogDispley = ({ flower, drink, bell, timestamp}) => {
                     {bell == "ふつう" && <img src={standard} className="namulogImg" />}
                     {bell == "かね" && <img src={kane} className="namulogImg" />}
                     {bell == "べる" && <img src={bell02} className="namulogImg" />}
+                </span>
+                <span className="">
+                    {image != "" && <img src={image} className="namulogImg" />}
                 </span>
                 <hr />
             </div>

@@ -40,6 +40,7 @@ const NamuLog = () => {
             setNamulog(
                 snapshot.docs.map((doc) => ({   // 「docs」はfirebaseの用語、「doc」は「docs」のなかの1件ずつのこと
                     id: doc.id,
+                    image: doc.data().image,
                     flower: doc.data().flower,
                     drink: doc.data().drink,
                     smoke: doc.data().smoke,
@@ -65,6 +66,7 @@ const NamuLog = () => {
                 <NamuLogDispley
                     key={namulogItem.id}
                     id={namulogItem.id}
+                    image={namulogItem.image}
                     flower={namulogItem.flower}
                     drink={namulogItem.drink}
                     smoke={namulogItem.smoke}

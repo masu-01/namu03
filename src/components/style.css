@@ -257,6 +257,10 @@ nav li:hover{
 
 
 /* ==アイテム選択画面（NamuItemChoice）======================= */
+.itemCheckWidth{
+    width: 100%;
+}
+
 .itemWrap{
     border: solid 1px #ffc0cb;
     border-radius: 15px;
@@ -270,14 +274,15 @@ nav li:hover{
 }
 
 .itemWrap label img{
-    margin: 0 10px;
+    margin: 0 8px;
+    /* width: 15px; */
     /* padding: 5px; */
 }
 
 /* 未選択のときに色を薄く */
 .itemWrap input[type="radio"] + label img{
     opacity:0.6;
-    width: 80px;
+    width: 35px;
 }
 
 /* 選択したときに色を濃くする */
@@ -285,7 +290,7 @@ nav li:hover{
     opacity:1;
     border:solid #ff1493 2px;
     border-radius: 15px;
-    width: 100px;
+    width: 50px;
 }
 
 
@@ -300,14 +305,14 @@ nav li:hover{
     background-color: WHITE;
     border-radius: 30px;
     border: solid;
-    padding: 20px;
-    width: 500px;
-    margin: 0 auto;
+    padding: 5px;
+    width: 85%;
+    margin-left: 15px;
     margin-top: 200px;
 }
 
 .itemCheckImg{
-    width: 130px;
+    width: 70px;
     height: auto;
     border: solid #ff1493 2px;
     border-radius: 5px;
