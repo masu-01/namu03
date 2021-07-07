@@ -104,13 +104,6 @@ const Regi = (props) => {
               uid: currentUser.uid,
             });
             console.log('SUCCESS save to group', res);
-            // ▼ ここに移動
-            setName("");
-            setBday("");
-            setDday("");
-            setInputImage("");
-            alert("登録しました (画像+投稿)");
-            // ▲ ここに移動させる
 
             // ▼ ここにカレンダー登録書いてみる＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
             const calSummary = "【命日】"+ name + "さん";
@@ -121,50 +114,52 @@ const Regi = (props) => {
             const month = dateMonth.getMonth()+1
             const day = dateMonth.getDate()
             const recurrence = "RRULE:FREQ=YEARLY;BYMONTHDAY="+day+";BYMONTH="+month
-
             console.log("繰り返しの月日",recurrence)
 
-
-            // console.log(dateTimeS)
-
-                  // 2.認証チェッく
-                  if (ApiCalendar.sign) {
-                    console.log("認証ok")
-                    const event = {
-                      summary: calSummary,
-                      description: calDiscription,
-                      start: {
-                        'dateTime': dateTimeS,
-                        'timeZone': 'Asia/Tokyo'
-                      },
-                      end: {
-                        'dateTime': dateTimeE,
-                        'timeZone': 'Asia/Tokyo'
-                      },
-                      // 繰り返し「毎年」
-                      recurrence: [
-                        recurrence
-                      ],
-                      // リマインダーを当日の９時とかにする←終日の予定にするとできなかったので
-                      // 8ｰ9時の予定を追加して、8時にリマインダーセット
-                      reminders: {
-                        'useDefault': false,
-                        'overrides': [
-                          // {'method': 'email', 'minutes': 24 * 60},
-                          {'method': 'popup', 'minutes': 0},
-                        ]
-                      }
-                    };
-                    console.log("event", event)
-
-                    await ApiCalendar.createEvent(event);
-
-
-                  }else {
-                          // 2’.認証していなければOAuth認証
-                          ApiCalendar.handleAuthClick();
+              // 2.認証チェック
+              if (ApiCalendar.sign) {
+                console.log("認証ok")
+                const event = {
+                  summary: calSummary,
+                  description: calDiscription,
+                  start: {
+                    'dateTime': dateTimeS,
+                    'timeZone': 'Asia/Tokyo'
+                  },
+                  end: {
+                    'dateTime': dateTimeE,
+                    'timeZone': 'Asia/Tokyo'
+                  },
+                  // 繰り返し「毎年」
+                  recurrence: [
+                    recurrence
+                  ],
+                  // リマインダーを当日の９時とかにする←終日の予定にするとできなかったので
+                  // 8ｰ9時の予定を追加して、8時にリマインダーセット
+                  reminders: {
+                    'useDefault': false,
+                    'overrides': [
+                      // {'method': 'email', 'minutes': 24 * 60},
+                      {'method': 'popup', 'minutes': 0},
+                    ]
                   }
+                };
+                console.log("event", event)
+                await ApiCalendar.createEvent(event);
+
+              }else {
+                      // 2’.認証していなければOAuth認証
+                      ApiCalendar.handleAuthClick();
+              }
             // ▲ ここにカレンダー登録書いてみる＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+
+            // ▼ ここに移動
+            setName("");
+            setBday("");
+            setDday("");
+            setInputImage("");
+            alert("登録しました");
+            // ▲ ここに移動させる
 
           } catch(error) {
             console.log(error)
@@ -173,8 +168,6 @@ const Regi = (props) => {
         }
       );
 
-
-
       setName("");
       setRelation("");
       setBday("");
@@ -182,7 +175,7 @@ const Regi = (props) => {
       setInputImage("");
       // alert("登録しました");
     } else {
-        console.log('inputImage 無し', inputImage); // 追加
+      console.log('inputImage 無し', inputImage); // 追加
       // テキストだけ（input="text" だけ）
       db.collection("group").add({
         image: "",
@@ -193,6 +186,55 @@ const Regi = (props) => {
         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
         uid: currentUser.uid,
       });
+
+        // ▼ ここにカレンダー登録書いてみる＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+        const calSummary = "【命日】"+ name + "さん";
+        const calDiscription = "続柄：" + relation;
+        const dateTimeS = dday+"T08:00:00"
+        const dateTimeE = dday+"T09:00:00"
+        const dateMonth = new Date(dday);
+        const month = dateMonth.getMonth()+1
+        const day = dateMonth.getDate()
+        const recurrence = "RRULE:FREQ=YEARLY;BYMONTHDAY="+day+";BYMONTH="+month
+        console.log("繰り返しの月日",recurrence)
+
+        // 2.認証チェック
+        if (ApiCalendar.sign) {
+          console.log("認証ok")
+          const event = {
+            summary: calSummary,
+            description: calDiscription,
+            start: {
+              'dateTime': dateTimeS,
+              'timeZone': 'Asia/Tokyo'
+            },
+            end: {
+              'dateTime': dateTimeE,
+              'timeZone': 'Asia/Tokyo'
+            },
+            // 繰り返し「毎年」
+            recurrence: [
+              recurrence
+            ],
+            // リマインダーを当日の９時とかにする←終日の予定にするとできなかったので
+            // 8ｰ9時の予定を追加して、8時にリマインダーセット
+            reminders: {
+              'useDefault': false,
+              'overrides': [
+                // {'method': 'email', 'minutes': 24 * 60},
+                {'method': 'popup', 'minutes': 0},
+              ]
+            }
+          };
+          console.log("event", event)
+          ApiCalendar.createEvent(event);
+
+        }else {
+          // 2’.認証していなければOAuth認証
+          ApiCalendar.handleAuthClick();
+        }
+        // ▲ ここにカレンダー登録書いてみる＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+
       setName("");
       setRelation("");
       setBday("");
@@ -200,6 +242,7 @@ const Regi = (props) => {
       setInputImage("");
       alert("登録しました");
     }
+    
   };
 
   return (
@@ -267,7 +310,7 @@ const Regi = (props) => {
           </div>
 
           <div>
-          <button type="submit" class="btn btn-outline-warning" disabled={!name}>とうろく</button>
+          <button type="submit" class="btn btn-outline-warning" disabled={!name} disabled={!inputImage}>とうろく</button>
           </div>
 
             <span className="regiText">ボタン押したら、登録完了と表示されるまで待ってね</span>
