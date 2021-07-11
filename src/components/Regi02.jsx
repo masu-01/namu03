@@ -4,22 +4,55 @@ import React, { useState, useEffect } from 'react';
 import { db, storage, auth } from '../firebase';
 import firebase from 'firebase/app';
 import MediaQuery from 'react-responsive'
-import ApiCalendar from "react-google-calendar-api";
+import gapi from 'gapi'
+// import { gapi } from 'gapi-script';
+// import ApiCalendar from "react-google-calendar-api";
 import Menu from './Menu';
 import "./style.css"
 import "bootstrap/dist/css/bootstrap.min.css"
 
 
+const CLIENT_ID = ' 948990783062-o154qd00d1jg6a15gapd62egphpj3oai.apps.googleusercontent.com ';
+const DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"];
+const SCOPES = "https://www.googleapis.com/auth/calendar";
 
-const Regi = (props) => {
+const Regi02 = (props) => {
   // UID取得＝＝＝＝＝＝
   const [currentUser, setCurrentUser] = useState("")
+  const gtoken = currentUser.refreshToken
   auth.onAuthStateChanged(user => {
      setCurrentUser(user);
     });
-
-  // console.log("ログインユーザー",currentUser)
+  console.log("ユーザー情報すべて",currentUser)
+  console.log("ユーザー情報",currentUser.refreshToken)
   // ＝＝＝＝＝＝＝＝＝＝＝
+
+  const Config = {
+    'clientId': process.env.REACT_APP_CLIENT_ID,
+    'apiKey': process.env.REACT_APP_API_KEY,
+    'scope': 'https://www.googleapis.com/auth/calendar',
+    'discoveryDocs': ['https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest']
+}
+
+  class ApiCalendar{
+    constructor(props) {
+        this.access_token = props.access_token
+        this.sign = false
+        window.onGapiLoaded = this.handleClientLoad()
+    }
+    async handleClientLoad() {
+        return await new Promise((resolve, reject) =>{
+            window.gapi.load('client:auth2', () => {
+                window.gapi.client.init(Config).then(() => {
+                    window.gapi.client.setToken({access_token: this.access_token}) // access_tokenをセット
+                    this.sign = true
+                    resolve()
+                },(error)=>{
+                    alert(error['details'])
+                })
+            })
+        })
+    }}
 
   // ==ログイン認証セット===================================================
   useEffect(() => {
@@ -34,14 +67,6 @@ const Regi = (props) => {
       return () => unSub();
   }, []);
   // ==ログイン認証セット===================================================
-
-  // if (ApiCalendar.sign) {
-  //   console.log("カレンダー認証ok")
-  // }else{
-  //   console.log("カレンダー認証ng")
-  //   // 2’.認証していなければOAuth認証
-  //   // ApiCalendar.handleAuthClick();
-  // }
 
   // useStateを記述
   // 記述3 画像を保持するためのuseState
@@ -125,72 +150,35 @@ const Regi = (props) => {
             const recurrence = "RRULE:FREQ=YEARLY;BYMONTHDAY="+day+";BYMONTH="+month
             console.log("繰り返しの月日",recurrence)
 
-                          // 2.認証チェック
-                            console.log("カレンダーここから")
-                            const event = {
-                              summary: calSummary,
-                              description: calDiscription,
-                              start: {
-                                'dateTime': dateTimeS,
-                                'timeZone': 'Asia/Tokyo'
-                              },
-                              end: {
-                                'dateTime': dateTimeE,
-                                'timeZone': 'Asia/Tokyo'
-                              },
-                              // 繰り返し「毎年」
-                              recurrence: [
-                                recurrence
-                              ],
-                              // リマインダーを当日の９時とかにする←終日の予定にするとできなかったので
-                              // 8ｰ9時の予定を追加して、8時にリマインダーセット
-                              reminders: {
-                                'useDefault': false,
-                                'overrides': [
-                                  // {'method': 'email', 'minutes': 24 * 60},
-                                  {'method': 'popup', 'minutes': 0},
-                                ]
-                              }
-                            };
-                            console.log("event", event)
-                            await ApiCalendar.createEvent(event);
-            
-
-              // // 2.認証チェック
-              // if (ApiCalendar.sign) {
-              //   console.log("認証ok")
-              //   const event = {
-              //     summary: calSummary,
-              //     description: calDiscription,
-              //     start: {
-              //       'dateTime': dateTimeS,
-              //       'timeZone': 'Asia/Tokyo'
-              //     },
-              //     end: {
-              //       'dateTime': dateTimeE,
-              //       'timeZone': 'Asia/Tokyo'
-              //     },
-              //     // 繰り返し「毎年」
-              //     recurrence: [
-              //       recurrence
-              //     ],
-              //     // リマインダーを当日の９時とかにする←終日の予定にするとできなかったので
-              //     // 8ｰ9時の予定を追加して、8時にリマインダーセット
-              //     reminders: {
-              //       'useDefault': false,
-              //       'overrides': [
-              //         // {'method': 'email', 'minutes': 24 * 60},
-              //         {'method': 'popup', 'minutes': 0},
-              //       ]
-              //     }
-              //   };
-              //   console.log("event", event)
-              //   await ApiCalendar.createEvent(event);
-
-              // }else {
-              //         // 2’.認証していなければOAuth認証
-              //         ApiCalendar.handleAuthClick();
-              // }
+            console.log("カレンダーここから")
+            const event = {
+              summary: calSummary,
+              description: calDiscription,
+              start: {
+                'dateTime': dateTimeS,
+                'timeZone': 'Asia/Tokyo'
+              },
+              end: {
+                'dateTime': dateTimeE,
+                'timeZone': 'Asia/Tokyo'
+              },
+              // 繰り返し「毎年」
+              recurrence: [
+                recurrence
+              ],
+              // リマインダーを当日の９時とかにする←終日の予定にするとできなかったので
+              // 8ｰ9時の予定を追加して、8時にリマインダーセット
+              reminders: {
+                'useDefault': false,
+                'overrides': [
+                  // {'method': 'email', 'minutes': 24 * 60},
+                  {'method': 'popup', 'minutes': 0},
+                ]
+              }
+            };
+            console.log("event", event)
+            await window.gapi.client.calendar.events.insert(event);
+          
             // ▲ ここにカレンダー登録書いてみる＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 
             // ▼ ここに移動
@@ -265,7 +253,7 @@ const Regi = (props) => {
             }
           };
           console.log("event", event)
-          ApiCalendar.createEvent(event);
+          // ApiCalendar.createEvent(event);
 
         // ▲ ここにカレンダー登録書いてみる＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 
@@ -422,4 +410,4 @@ const Regi = (props) => {
   );
 };
 
-export default Regi
+export default Regi02
