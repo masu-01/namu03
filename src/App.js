@@ -60,33 +60,33 @@ function App(props) {
       </div>
     </MediaQuery>
 
+
     <MediaQuery query="(min-width:577px)">
     <div className="App">
-      <div>
-        <Menu />
-        <div className="contents">
-          <div className="topBgi" >
-            <img src={butsudan} height="400px" />
-          </div>
+      <Menu />
 
-        <div className="contents">
-          <TopFaceDispleyGet />
-          <div className="btnWrapNamu">
-          <Link to="/choice" className="btnImageNamu">なむなむする</Link>
-          </div>
+      <div className="contents">
+        <div className="topBgi" >
+          <img src={butsudan} height="400px" />
         </div>
-      </div>
-       <hr />
 
-      </div>
+        <div className="topFaceContainer">
+          <TopFaceDispleyGet />
+        </div>
 
-      <div className="namuLogArea">
+        <div className="btnWrapNamu">
+          <Link to="/choice" className="btnImageNamu">なむなむする</Link>
+        </div>
+
+        </div>
+
+        <div className="namuLogArea">
         <div>あなたのなむログ</div>
         <div className="namuLogData">
           <NamuLog />
-        </div>        
-      </div>
-
+        </div>
+        </div>
+    
     </div>
     </MediaQuery>
     </>

@@ -12,47 +12,14 @@ import "./style.css"
 import "bootstrap/dist/css/bootstrap.min.css"
 
 
-const CLIENT_ID = ' 948990783062-o154qd00d1jg6a15gapd62egphpj3oai.apps.googleusercontent.com ';
-const DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"];
-const SCOPES = "https://www.googleapis.com/auth/calendar";
-
 const Regi02 = (props) => {
   // UID取得＝＝＝＝＝＝
   const [currentUser, setCurrentUser] = useState("")
-  const gtoken = currentUser.refreshToken
   auth.onAuthStateChanged(user => {
      setCurrentUser(user);
     });
   console.log("ユーザー情報すべて",currentUser)
-  console.log("ユーザー情報",currentUser.refreshToken)
   // ＝＝＝＝＝＝＝＝＝＝＝
-
-  const Config = {
-    'clientId': process.env.REACT_APP_CLIENT_ID,
-    'apiKey': process.env.REACT_APP_API_KEY,
-    'scope': 'https://www.googleapis.com/auth/calendar',
-    'discoveryDocs': ['https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest']
-}
-
-  class ApiCalendar{
-    constructor(props) {
-        this.access_token = props.access_token
-        this.sign = false
-        window.onGapiLoaded = this.handleClientLoad()
-    }
-    async handleClientLoad() {
-        return await new Promise((resolve, reject) =>{
-            window.gapi.load('client:auth2', () => {
-                window.gapi.client.init(Config).then(() => {
-                    window.gapi.client.setToken({access_token: this.access_token}) // access_tokenをセット
-                    this.sign = true
-                    resolve()
-                },(error)=>{
-                    alert(error['details'])
-                })
-            })
-        })
-    }}
 
   // ==ログイン認証セット===================================================
   useEffect(() => {
@@ -87,6 +54,12 @@ const Regi02 = (props) => {
       e.target.value = "";
     }
   };
+
+  // const gapi = window.gapi
+  // const CLIENT_ID = "948990783062-o154qd00d1jg6a15gapd62egphpj3oai.apps.googleusercontent.com"
+  // const API_KEY = "AIzaSyDHi8gPjJf42vTD-o5qAAk699Os6FB2r9g"
+  // const DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"]
+  // const SCOPES = "https://www.googleapis.com/auth/calendar"
   
   // 記述4. 送信ボタンが押されたら（エンターが押されたら）送信の処理=firebaseにデータを登録する処理を書きます
   const sendTweet = (e) => {
@@ -140,6 +113,8 @@ const Regi02 = (props) => {
             console.log('SUCCESS save to group', res);
 
             // ▼ ここにカレンダー登録書いてみる＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+            console.log("カレンダーここから")
+            
             const calSummary = "【命日】"+ name + "さん";
             const calDiscription = "続柄：" + relation;
             const dateTimeS = dday+"T08:00:00"
@@ -150,34 +125,83 @@ const Regi02 = (props) => {
             const recurrence = "RRULE:FREQ=YEARLY;BYMONTHDAY="+day+";BYMONTH="+month
             console.log("繰り返しの月日",recurrence)
 
-            console.log("カレンダーここから")
-            const event = {
-              summary: calSummary,
-              description: calDiscription,
-              start: {
-                'dateTime': dateTimeS,
-                'timeZone': 'Asia/Tokyo'
-              },
-              end: {
-                'dateTime': dateTimeE,
-                'timeZone': 'Asia/Tokyo'
-              },
-              // 繰り返し「毎年」
-              recurrence: [
-                recurrence
-              ],
-              // リマインダーを当日の９時とかにする←終日の予定にするとできなかったので
-              // 8ｰ9時の予定を追加して、8時にリマインダーセット
-              reminders: {
-                'useDefault': false,
-                'overrides': [
-                  // {'method': 'email', 'minutes': 24 * 60},
-                  {'method': 'popup', 'minutes': 0},
-                ]
+            // gapi.load("client:auth2",() => {
+            //   gapi.client.init({
+            //     apiKey: API_KEY,
+            //     clientId: CLIENT_ID,
+            //     discoveryDocs: DISCOVERY_DOCS,
+            //     scope: SCOPES
+            //   })
+            //   .then(() => {
+            //     gapi.client.setToken({access_token: this.access_token})
+            //   })
+            // })
+
+            // gapi.client.load("calendar","v3",()=> console.log("loaded calendar"));
+
+            // gapi.auth2.getAuthInstance().signIn()
+            // .then(() => {
+            //   console.log("signed In")
+
+              const event = {
+                summary: calSummary,
+                description: calDiscription,
+                start: {
+                  'dateTime': dateTimeS,
+                  'timeZone': 'Asia/Tokyo'
+                },
+                end: {
+                  'dateTime': dateTimeE,
+                  'timeZone': 'Asia/Tokyo'
+                },
+                // 繰り返し「毎年」
+                recurrence: [
+                  recurrence
+                ],
+                // リマインダーを当日の９時とかにする←終日の予定にするとできなかったので
+                // 8ｰ9時の予定を追加して、8時にリマインダーセット
+                reminders: {
+                  'useDefault': false,
+                  'overrides': [
+                    // {'method': 'email', 'minutes': 24 * 60},
+                    {'method': 'popup', 'minutes': 0},
+                  ]
+                }
               }
-            };
-            console.log("event", event)
-            await window.gapi.client.calendar.events.insert(event);
+              gapi.client.calendar.events.insert(event);
+            
+
+
+
+
+
+
+
+            // const event = {
+            //   summary: calSummary,
+            //   description: calDiscription,
+            //   start: {
+            //     'dateTime': dateTimeS,
+            //     'timeZone': 'Asia/Tokyo'
+            //   },
+            //   end: {
+            //     'dateTime': dateTimeE,
+            //     'timeZone': 'Asia/Tokyo'
+            //   },
+            //   // 繰り返し「毎年」
+            //   recurrence: [
+            //     recurrence
+            //   ],
+            //   // リマインダーを当日の９時とかにする←終日の予定にするとできなかったので
+            //   // 8ｰ9時の予定を追加して、8時にリマインダーセット
+            //   reminders: {
+            //     'useDefault': false,
+            //     'overrides': [
+            //       // {'method': 'email', 'minutes': 24 * 60},
+            //       {'method': 'popup', 'minutes': 0},
+            //     ]
+            //   }
+            // };
           
             // ▲ ここにカレンダー登録書いてみる＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 

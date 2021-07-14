@@ -36,28 +36,17 @@ const Post = ({ id, name, relation, bday, dday, image, uid, timestamp}) => {
 
 
       <MediaQuery query="(min-width:577px)">
-        <div>
-            {/* imageを表示させる */}
-            <div><img src={image} alt="" width="200px" height="auto" /></div>
-
-            {/* name/bdayが渡ってくる */}
-            <div>なまえ：{name}</div>
-            <div>続柄：{relation}</div>
-            <div>誕生日：{bday}</div>
-            <div>命日：{dday}</div>
-
-            {/* {console.log("DID",id)} IDとれてる */}
-
-            {/* 登録日を表示 */}
-            {/* <div>{new Date(timestamp?.toDate()).toLocaleString()}</div> */}
-            <div>
-            <button onClick={deleteInputData}>削除</button>
+      <div className="postCard">
+            <div className="postBox">
+                <img src={image} className="postImage" style={{height: '100%'}} />
+                <div className="postTextArea">
+                    <span class="postTitle">{name}</span>
+                    <span class="postContent">{relation}</span><br />
+                    <span class="postContent">誕生日：{bday}</span><br />
+                    <span class="postContent">命日：{dday}</span><br />
+                    <span class="postDelete" onClick={deleteInputData}>削除</span>
+                </div>
             </div>
-            <div>
-            <button>詳細</button>
-            </div>
-
-            <hr />        
         </div>
         </MediaQuery>
         </>

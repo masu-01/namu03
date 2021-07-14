@@ -35,14 +35,6 @@ const Regi = (props) => {
   }, []);
   // ==ログイン認証セット===================================================
 
-  // if (ApiCalendar.sign) {
-  //   console.log("カレンダー認証ok")
-  // }else{
-  //   console.log("カレンダー認証ng")
-  //   // 2’.認証していなければOAuth認証
-  //   // ApiCalendar.handleAuthClick();
-  // }
-
   // useStateを記述
   // 記述3 画像を保持するためのuseState
   const [inputImage, setInputImage] = useState(null);
@@ -114,84 +106,84 @@ const Regi = (props) => {
             });
             console.log('SUCCESS save to group', res);
 
-            // ▼ ここにカレンダー登録書いてみる＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
-            const calSummary = "【命日】"+ name + "さん";
-            const calDiscription = "続柄：" + relation;
-            const dateTimeS = dday+"T08:00:00"
-            const dateTimeE = dday+"T09:00:00"
-            const dateMonth = new Date(dday);
-            const month = dateMonth.getMonth()+1
-            const day = dateMonth.getDate()
-            const recurrence = "RRULE:FREQ=YEARLY;BYMONTHDAY="+day+";BYMONTH="+month
-            console.log("繰り返しの月日",recurrence)
+            // // ▼ ここにカレンダー登録書いてみる＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+            // const calSummary = "【命日】"+ name + "さん";
+            // const calDiscription = "続柄：" + relation;
+            // const dateTimeS = dday+"T08:00:00"
+            // const dateTimeE = dday+"T09:00:00"
+            // const dateMonth = new Date(dday);
+            // const month = dateMonth.getMonth()+1
+            // const day = dateMonth.getDate()
+            // const recurrence = "RRULE:FREQ=YEARLY;BYMONTHDAY="+day+";BYMONTH="+month
+            // console.log("繰り返しの月日",recurrence)
 
-                          // 2.認証チェック
-                            console.log("カレンダーここから")
-                            const event = {
-                              summary: calSummary,
-                              description: calDiscription,
-                              start: {
-                                'dateTime': dateTimeS,
-                                'timeZone': 'Asia/Tokyo'
-                              },
-                              end: {
-                                'dateTime': dateTimeE,
-                                'timeZone': 'Asia/Tokyo'
-                              },
-                              // 繰り返し「毎年」
-                              recurrence: [
-                                recurrence
-                              ],
-                              // リマインダーを当日の９時とかにする←終日の予定にするとできなかったので
-                              // 8ｰ9時の予定を追加して、8時にリマインダーセット
-                              reminders: {
-                                'useDefault': false,
-                                'overrides': [
-                                  // {'method': 'email', 'minutes': 24 * 60},
-                                  {'method': 'popup', 'minutes': 0},
-                                ]
-                              }
-                            };
-                            console.log("event", event)
-                            await ApiCalendar.createEvent(event);
+            //               // 2.認証チェック
+            //                 console.log("カレンダーここから")
+            //                 const event = {
+            //                   summary: calSummary,
+            //                   description: calDiscription,
+            //                   start: {
+            //                     'dateTime': dateTimeS,
+            //                     'timeZone': 'Asia/Tokyo'
+            //                   },
+            //                   end: {
+            //                     'dateTime': dateTimeE,
+            //                     'timeZone': 'Asia/Tokyo'
+            //                   },
+            //                   // 繰り返し「毎年」
+            //                   recurrence: [
+            //                     recurrence
+            //                   ],
+            //                   // リマインダーを当日の９時とかにする←終日の予定にするとできなかったので
+            //                   // 8ｰ9時の予定を追加して、8時にリマインダーセット
+            //                   reminders: {
+            //                     'useDefault': false,
+            //                     'overrides': [
+            //                       // {'method': 'email', 'minutes': 24 * 60},
+            //                       {'method': 'popup', 'minutes': 0},
+            //                     ]
+            //                   }
+            //                 };
+            //                 console.log("event", event)
+            //                 await ApiCalendar.createEvent(event);
             
 
-              // // 2.認証チェック
-              // if (ApiCalendar.sign) {
-              //   console.log("認証ok")
-              //   const event = {
-              //     summary: calSummary,
-              //     description: calDiscription,
-              //     start: {
-              //       'dateTime': dateTimeS,
-              //       'timeZone': 'Asia/Tokyo'
-              //     },
-              //     end: {
-              //       'dateTime': dateTimeE,
-              //       'timeZone': 'Asia/Tokyo'
-              //     },
-              //     // 繰り返し「毎年」
-              //     recurrence: [
-              //       recurrence
-              //     ],
-              //     // リマインダーを当日の９時とかにする←終日の予定にするとできなかったので
-              //     // 8ｰ9時の予定を追加して、8時にリマインダーセット
-              //     reminders: {
-              //       'useDefault': false,
-              //       'overrides': [
-              //         // {'method': 'email', 'minutes': 24 * 60},
-              //         {'method': 'popup', 'minutes': 0},
-              //       ]
-              //     }
-              //   };
-              //   console.log("event", event)
-              //   await ApiCalendar.createEvent(event);
+            //   // // 2.認証チェック
+            //   // if (ApiCalendar.sign) {
+            //   //   console.log("認証ok")
+            //   //   const event = {
+            //   //     summary: calSummary,
+            //   //     description: calDiscription,
+            //   //     start: {
+            //   //       'dateTime': dateTimeS,
+            //   //       'timeZone': 'Asia/Tokyo'
+            //   //     },
+            //   //     end: {
+            //   //       'dateTime': dateTimeE,
+            //   //       'timeZone': 'Asia/Tokyo'
+            //   //     },
+            //   //     // 繰り返し「毎年」
+            //   //     recurrence: [
+            //   //       recurrence
+            //   //     ],
+            //   //     // リマインダーを当日の９時とかにする←終日の予定にするとできなかったので
+            //   //     // 8ｰ9時の予定を追加して、8時にリマインダーセット
+            //   //     reminders: {
+            //   //       'useDefault': false,
+            //   //       'overrides': [
+            //   //         // {'method': 'email', 'minutes': 24 * 60},
+            //   //         {'method': 'popup', 'minutes': 0},
+            //   //       ]
+            //   //     }
+            //   //   };
+            //   //   console.log("event", event)
+            //   //   await ApiCalendar.createEvent(event);
 
-              // }else {
-              //         // 2’.認証していなければOAuth認証
-              //         ApiCalendar.handleAuthClick();
-              // }
-            // ▲ ここにカレンダー登録書いてみる＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+            //   // }else {
+            //   //         // 2’.認証していなければOAuth認証
+            //   //         ApiCalendar.handleAuthClick();
+            //   // }
+            // // ▲ ここにカレンダー登録書いてみる＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 
             // ▼ ここに移動
             setName("");
@@ -227,47 +219,47 @@ const Regi = (props) => {
         uid: currentUser.uid,
       });
 
-        // ▼ ここにカレンダー登録書いてみる＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
-        const calSummary = "【命日】"+ name + "さん";
-        const calDiscription = "続柄：" + relation;
-        const dateTimeS = dday+"T08:00:00"
-        const dateTimeE = dday+"T09:00:00"
-        const dateMonth = new Date(dday);
-        const month = dateMonth.getMonth()+1
-        const day = dateMonth.getDate()
-        const recurrence = "RRULE:FREQ=YEARLY;BYMONTHDAY="+day+";BYMONTH="+month
-        console.log("繰り返しの月日",recurrence)
+        // // ▼ ここにカレンダー登録書いてみる＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+        // const calSummary = "【命日】"+ name + "さん";
+        // const calDiscription = "続柄：" + relation;
+        // const dateTimeS = dday+"T08:00:00"
+        // const dateTimeE = dday+"T09:00:00"
+        // const dateMonth = new Date(dday);
+        // const month = dateMonth.getMonth()+1
+        // const day = dateMonth.getDate()
+        // const recurrence = "RRULE:FREQ=YEARLY;BYMONTHDAY="+day+";BYMONTH="+month
+        // console.log("繰り返しの月日",recurrence)
 
-        // 2.認証チェック
-          const event = {
-            summary: calSummary,
-            description: calDiscription,
-            start: {
-              'dateTime': dateTimeS,
-              'timeZone': 'Asia/Tokyo'
-            },
-            end: {
-              'dateTime': dateTimeE,
-              'timeZone': 'Asia/Tokyo'
-            },
-            // 繰り返し「毎年」
-            recurrence: [
-              recurrence
-            ],
-            // リマインダーを当日の９時とかにする←終日の予定にするとできなかったので
-            // 8ｰ9時の予定を追加して、8時にリマインダーセット
-            reminders: {
-              'useDefault': false,
-              'overrides': [
-                // {'method': 'email', 'minutes': 24 * 60},
-                {'method': 'popup', 'minutes': 0},
-              ]
-            }
-          };
-          console.log("event", event)
-          ApiCalendar.createEvent(event);
+        // // 2.認証チェック
+        //   const event = {
+        //     summary: calSummary,
+        //     description: calDiscription,
+        //     start: {
+        //       'dateTime': dateTimeS,
+        //       'timeZone': 'Asia/Tokyo'
+        //     },
+        //     end: {
+        //       'dateTime': dateTimeE,
+        //       'timeZone': 'Asia/Tokyo'
+        //     },
+        //     // 繰り返し「毎年」
+        //     recurrence: [
+        //       recurrence
+        //     ],
+        //     // リマインダーを当日の９時とかにする←終日の予定にするとできなかったので
+        //     // 8ｰ9時の予定を追加して、8時にリマインダーセット
+        //     reminders: {
+        //       'useDefault': false,
+        //       'overrides': [
+        //         // {'method': 'email', 'minutes': 24 * 60},
+        //         {'method': 'popup', 'minutes': 0},
+        //       ]
+        //     }
+        //   };
+        //   console.log("event", event)
+        //   ApiCalendar.createEvent(event);
 
-        // ▲ ここにカレンダー登録書いてみる＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+        // // ▲ ここにカレンダー登録書いてみる＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 
       setName("");
       setRelation("");
@@ -362,60 +354,65 @@ const Regi = (props) => {
           <h1 className="titleText">登録してください</h1>
           {/* formタグを使います */}
           <form onSubmit={sendTweet}>
-              <div>
-              <label>
-              <input type="file" onChange={onChangeImageHandler} className="regiInput" />
-              写真を登録してください</label>
-            </div>
-            <div>
-              <input
-                type="text"
-                placeholder="なまえ"
-                className="loginInput"
-                autoFocus
-                value={name}
-                onChange={(e) => setName(e.target.value)}
+          {/* なまえ */}
+          <div class="mb-3 regiForm">
+            <label class="form-label">なまえ</label>
+            <input
+             type="text"
+             placeholder="なまえを入力してください"
+             class="form-control"
+             autoFocus
+             value={name}
+             onChange={(e) => setName(e.target.value)}
+             />
+          </div>
+
+          {/* ぞくがら */}
+          <div class="mb-3 regiForm">
+            <label class="form-label">ぞくがら</label>
+            <input
+             type="text"
+             placeholder="続柄を入力してください"
+             class="form-control"
+             value={relation}
+             onChange={(e) => setRelation(e.target.value)}
               />
-            </div>
-            <div>
-              <input
-                type="text"
-                placeholder="続柄"
-                className="loginInput"
-                autoFocus
-                value={relation}
-                onChange={(e) => setRelation(e.target.value)}
-              />
-            </div>
-            <div>
-              <label>お誕生日</label>
-              <input
-                type="date"
-                placeholder="誕生日"
-                className="loginInput"
-                autoFocus
-                value={bday}
-                onChange={(e) => setBday(e.target.value)}
-              />
-            </div>
-            <div>
-            <label>命日</label>
-              <input
-                type="date"
-                placeholder="命日"
-                className="loginInput"
-                autoFocus
-                value={dday}
-                onChange={(e) => setDday(e.target.value)}
-              />
-            </div>
-            <div>
-              <button type="submit" disabled={!name} disabled={!inputImage}>
-                登録
-              </button>
-              </div> 
-              <p>ボタン押したら、登録完了と表示されるまで待ってね</p>
-          </form>
+          </div>
+
+          {/* 生年月日 */}
+          <div class="mb-3 regiForm">
+            <label class="form-label">たんじょうび</label>
+            <input
+              type="date"
+              class="form-control"
+              value={bday}
+              onChange={(e) => setBday(e.target.value)}
+               />
+          </div>
+
+          {/* 命日 */}
+          <div class="mb-3 regiForm">
+            <label class="form-label">めいにち</label>
+            <input
+              type="date"
+              class="form-control"
+              value={dday}
+              onChange={(e) => setDday(e.target.value)}
+             />
+             <span className="regiText">※命日はGoogleカレンダーに登録されます</span>
+          </div>
+
+          <div class="mb-3 regiForm">
+            <label class="form-label">写真ありますか？</label>
+            <input class="form-control" type="file" onChange={onChangeImageHandler} />
+          </div>
+
+          <div>
+          <button type="submit" class="btn btn-outline-warning" disabled={!name} disabled={!inputImage}>とうろく</button>
+          </div>
+
+            <span className="regiText">ボタン押したら、登録完了と表示されるまで待ってね</span>
+        </form>
           </div>
       </MediaQuery>
     </>
