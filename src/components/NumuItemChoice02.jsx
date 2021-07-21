@@ -33,7 +33,7 @@ const NumuItemChoice02 = () => {
           // 画像
           setInputImage(e.target.files[0]);
           // 入力部分をからにする
-          e.target.value = "";
+        //   e.target.value = "";
         }
       };
 

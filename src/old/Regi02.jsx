@@ -7,7 +7,7 @@ import MediaQuery from 'react-responsive'
 import gapi from 'gapi'
 // import { gapi } from 'gapi-script';
 // import ApiCalendar from "react-google-calendar-api";
-import Menu from './Menu';
+import Menu from '../components/Menu';
 import "./style.css"
 import "bootstrap/dist/css/bootstrap.min.css"
 
@@ -51,7 +51,7 @@ const Regi02 = (props) => {
       // 画像
       setInputImage(e.target.files[0]);
       // 入力部分をからにする
-      e.target.value = "";
+      // e.target.value = "";
     }
   };
 

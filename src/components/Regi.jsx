@@ -50,8 +50,6 @@ const Regi = (props) => {
       console.log(e.target.files[0], "画像");
       // 画像
       setInputImage(e.target.files[0]);
-      // 入力部分をからにする
-      e.target.value = "";
     }
   };
   
@@ -191,6 +189,8 @@ const Regi = (props) => {
             setDday("");
             setInputImage("");
             alert("登録しました");
+            window.location = "/list";
+
             // ▲ ここに移動させる
 
           } catch(error) {
@@ -327,7 +327,7 @@ const Regi = (props) => {
               value={dday}
               onChange={(e) => setDday(e.target.value)}
              />
-             <span className="regiText">※命日はGoogleカレンダーに登録されます</span>
+             {/* <span className="regiText">※命日はGoogleカレンダーに登録されます</span> */}
           </div>
 
           <div class="mb-3 regiForm">
@@ -399,7 +399,7 @@ const Regi = (props) => {
               value={dday}
               onChange={(e) => setDday(e.target.value)}
              />
-             <span className="regiText">※命日はGoogleカレンダーに登録されます</span>
+             {/* <span className="regiText">※命日はGoogleカレンダーに登録されます</span> */}
           </div>
 
           <div class="mb-3 regiForm">

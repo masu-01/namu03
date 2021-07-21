@@ -12,7 +12,6 @@ import NumuItemCheck from './components/NumuItemCheck'
 import NamuAnimation from './components/NamuAnimation'
 import NumuItemCheck02 from './components/NumuItemCheck02';
 import NumuItemChoice02 from './components/NumuItemChoice02';
-import Regi02 from './components/Regi02';
 
 
 ReactDOM.render(
@@ -33,8 +32,6 @@ ReactDOM.render(
 
       {/* 登録ページ */}
       <Route exact path="/regi" component={Regi} />
-      <Route exact path="/regi02" component={Regi02} />
-
 
       {/* なむなむする */}
       <Route exact path="/choice" component={NumuItemChoice02} />
