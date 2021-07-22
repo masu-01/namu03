@@ -23,7 +23,7 @@ const Menu = (props) => {
                         async () => {
                             try {
                             await auth.signOut();
-                            props.history.push("/"); //ここでログアウトして飛ばしたいページに戻す
+                            props.history.push("/login"); //ここでログアウトして飛ばしたいページに戻す
                             } catch (error) {
                             console.log("error.message")
                             // alert(error.message);

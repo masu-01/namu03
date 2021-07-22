@@ -13,7 +13,7 @@ const Glogin = (props) => {
         const provider = new firebase.auth.GoogleAuthProvider();
         firebase.auth().signInWithRedirect(provider);
 
-        provider.addScope('https://www.googleapis.com/auth/calendar');    
+        // provider.addScope('https://www.googleapis.com/auth/calendar');    
       };
 
     // useEffectを使って
